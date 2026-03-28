@@ -58,7 +58,7 @@ const Footer = () => {
 	return (
 		<footer
 			style={{ fontFamily: "'DM Sans', 'Segoe UI', sans-serif" }}
-			className="bg-[#111111] text-white border-t border-[#DB4444]/60"
+			className="bg-[#111111] dark:bg-slate-900 text-white border-t border-[#DB4444]/60"
 		>
 			<div className="max-w-7xl mx-auto px-6 py-14">
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
