@@ -1,0 +1,21 @@
+const ArrowRight = ({ width = 18, height = 16, stroke = "black" }) => {
+	return (
+		<svg
+			width={width}
+			height={height}
+			viewBox="0 0 18 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M0.75 7.75H17.25M17.25 7.75L10.25 0.75M17.25 7.75L10.25 14.75"
+				stroke={stroke}
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+};
+
+export default ArrowRight;

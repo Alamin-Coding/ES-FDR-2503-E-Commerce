@@ -3,14 +3,15 @@ import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 import card_1 from "../assets/card-image-1.png";
 import { Link } from "react-router";
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
 	return (
 		<div className="overflow-hidden w-[270px]">
-			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group">
+			{/* Image */}
+			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group min-h-[250px]">
 				<span className="absolute top-4 left-4 z-10 bg-secondary text-white rounded-xs inline-block py-1 px-2">
 					-20%
 				</span>
-				<img src={card_1} alt="image" />
+				<img src={product.image} alt="image" />
 				<div className="space-y-4 absolute top-4 right-4 z-10 flex flex-col gap-1">
 					<button>
 						<HeartIcon />
@@ -24,9 +25,9 @@ const ProductCard = () => {
 				</button>
 			</div>
 			<div className="pt-4">
-				<h4 className="text-black font-medium">HAVIT HV-G92 Gamepad</h4>
+				<h4 className="text-black font-medium">{product.title}</h4>
 				<p className="py-2">
-					<span className="text-secondary">$120</span> <del>$160</del>
+					<span className="text-secondary">${product.price}</span> <del>${product.oldPrice}</del>
 				</p>
 				<div className="flex justify-between items-center gap-3">
 					<ul className="flex gap-2 items-center">
