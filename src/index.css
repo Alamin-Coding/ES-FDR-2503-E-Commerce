@@ -25,3 +25,9 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 40px !important;
+  bottom: auto !important;
+}
