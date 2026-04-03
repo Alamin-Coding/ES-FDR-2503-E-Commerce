@@ -4,7 +4,6 @@ import BestSellingProducts from "../components/sections/BestSellingProducts";
 import Categories from "../components/sections/Categories";
 import ExploreOurProducts from "../components/sections/ExploreOurProducts";
 import FlashSale from "../components/sections/FlashSale";
-import Service from "../components/sections/Service";
 
 const HomePage = () => {
 	return (
@@ -13,9 +12,6 @@ const HomePage = () => {
 			<FlashSale />
 			<Categories />
 			<BestSellingProducts />
-			<Enhance />
-			<ExploreOurProducts />
-			<Service />
 		</div>
 	);
 };
