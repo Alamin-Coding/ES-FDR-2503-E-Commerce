@@ -2,7 +2,11 @@ import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 
 import { Link } from "react-router";
 
-const ProductCard = ({ product, showPrice=true }) => {
+const ProductCard = ({
+	product,
+	showPrice = true,
+	price_with_rating = false,
+}) => {
 	return (
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
@@ -25,14 +29,19 @@ const ProductCard = ({ product, showPrice=true }) => {
 			</div>
 			<div className="pt-4">
 				<h4 className="text-black font-medium">{product.title}</h4>
-				{
-					showPrice && 
-				<p className="py-2">
-					<span className="text-secondary">${product.price}</span> <del>${product.originalPrice}</del>
-				</p>
-				}
-				
-				<div className="flex justify-between items-center gap-3">
+				{showPrice && (
+					<p className="py-2">
+						<span className="text-secondary">${product.price}</span>{" "}
+						<del>${product.originalPrice}</del>
+					</p>
+				)}
+
+				<div className="flex items-center gap-3">
+					{price_with_rating && (
+						<p className="py-2">
+							<span className="text-secondary">${product.price}</span>
+						</p>
+					)}
 					<ul className="flex gap-2 items-center">
 						<li>
 							<StarIcon className="text-gold" />

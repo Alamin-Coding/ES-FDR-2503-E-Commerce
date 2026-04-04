@@ -6,6 +6,7 @@ import Section from "../Section";
 import Container from "../Container";
 import Arrows from "../Arrows";
 import { FlashSellingProductsData } from "../../data";
+import Button from "../Button";
 
 const FlashSale = () => {
 	return (
@@ -42,6 +43,11 @@ const FlashSale = () => {
 					{FlashSellingProductsData.map((product) => (
 						<ProductCard key={product.id} product={product} />
 					))}
+				</div>
+				<div className="pt-10 text-center">
+					<Button TagName="a" href="/shop">
+						View All Products
+					</Button>
 				</div>
 			</Container>
 		</Section>
