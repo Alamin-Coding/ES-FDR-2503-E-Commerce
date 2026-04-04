@@ -3,7 +3,7 @@ import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 import card_1 from "../assets/card-image-1.png";
 import { Link } from "react-router";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, showPrice=true }) => {
 	return (
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
@@ -26,9 +26,12 @@ const ProductCard = ({ product }) => {
 			</div>
 			<div className="pt-4">
 				<h4 className="text-black font-medium">{product.title}</h4>
-				<p className="py-2">
+				{
+					showPrice && <p className="py-2">
 					<span className="text-secondary">${product.price}</span> <del>${product.oldPrice}</del>
 				</p>
+				}
+				
 				<div className="flex justify-between items-center gap-3">
 					<ul className="flex gap-2 items-center">
 						<li>
