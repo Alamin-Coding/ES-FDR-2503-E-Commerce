@@ -7,11 +7,11 @@ import Image1 from "../assets/image-1.png";
 import Image2 from "../assets/image-2.png";
 import Image3 from "../assets/image-3.png";
 import Image from "../assets/pimage.png";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 import delivery from "../assets/icons/icon-delivery.png";
 import preturn from "../assets/icons/icon-return.png";
 import { FlashSellingProductsData } from "../data";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../components/SectionHeader";
 
 const ProductDetailPage = () => {
   return (

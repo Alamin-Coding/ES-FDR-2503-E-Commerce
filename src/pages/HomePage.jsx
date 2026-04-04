@@ -1,19 +1,19 @@
 import Banner from "../components/Banner";
-import ProductDetailPage from "../components/ProductDetailPage";
+import ProductDetailPage from "./ProductDetailPage";
 import BestSellingProducts from "../components/sections/BestSellingProducts";
 import Categories from "../components/sections/Categories";
 import FlashSale from "../components/sections/FlashSale";
-
+import Enhance from "../components/Enhance";
 
 const HomePage = () => {
 	return (
 		<div>
-			{/* <Banner />
+			<Banner />
 			<FlashSale />
 			<Categories />
-			<BestSellingProducts /> */}
-
-			<ProductDetailPage />
+			<BestSellingProducts />
+            <Enhance />
+			{/* <ProductDetailPage /> */}
 		
 		</div>
 	);
