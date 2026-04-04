@@ -1,10 +1,15 @@
 // Flash selling products
+import FS_image_1 from "./assets/flash-sale-1.png";
+import FS_image_2 from "./assets/flash-sale-2.png";
+import FS_image_3 from "./assets/flash-sale-3.png";
 import FS_image_4 from "./assets/flash-sale-4.png";
+
+
 export const FlashSellingProductsData = [
   {
     "id": 1,
-    "image": "https://via.placeholder.com/270x250/F5F5F5/000000?text=HAVIT+HV-G92",
-    "discount": 20,
+    "image": FS_image_1,
+    "discount": 40,
     "title": "HAVIT HV-G92 Gamepad",
     "price": 120,
     "originalPrice": 160,
@@ -13,77 +18,81 @@ export const FlashSellingProductsData = [
   },
   {
     "id": 2,
-    "image": BS_image_1,
+    "image": FS_image_2,
     "discount": 35,
-    "title": "Sony WH-1000XM5 Wireless Headphones",
-    "price": 298,
-    "originalPrice": 458,
+    "title": "AK-900 Wired Keyboard",
+    "price": 960,
+    "originalPrice": 1160,
     "rating": 4,
-    "reviews": 245
+    "reviews": 75
   },
   {
     "id": 3,
-    "image": "https://via.placeholder.com/270x250/F5F5F5/000000?text=Smart+Watch",
-    "discount": 15,
-    "title": "Samsung Galaxy Watch 6",
-    "price": 189,
-    "originalPrice": 229,
+    "image": FS_image_3,
+    "discount": 30,
+    "title": "IPS LCD Gaming Monitor",
+    "price": 970,
+    "originalPrice": 400,
     "rating": 5,
-    "reviews": 67
+    "reviews": 99
   },
   {
-    "id": 4,
+    "id": FS_image_4,
     "image": FS_image_4,
     "discount": 25,
     "title": "S-Series Comfort Chair ",
-    "price": 75,
-    "originalPrice": 99,
-    "rating": 4,
-    "reviews": 134
+    "price": 375,
+    "originalPrice": 400,
+    "rating": 4.5,
+    "reviews": 99
   }
 ]
 
 // Best selling products
 import BS_image_1 from "./assets/best-sale-1.png";
+import BS_image_2 from "./assets/best-sale-2.png";
+import BS_image_3 from "./assets/best-sale-3.png";
+import BS_image_4 from "./assets/best-sale-4.png";
+
 export const BestSellingProductsData = [
   {
     "id": 1,
-    "image": "https://via.placeholder.com/270x250/F5F5F5/000000?text=HAVIT+HV-G92",
-    "discount": 20,
-    "title": "HAVIT HV-G92 Gamepad",
-    "price": 120,
-    "originalPrice": 160,
+    "image": BS_image_1,
+    "discount": 28,
+    "title": "The north coat",
+    "price": 260,
+    "originalPrice": 360,
     "rating": 5,
-    "reviews": 88
+    "reviews": 65
   },
   {
     "id": 2,
-    "image": BS_image_1,
-    "discount": 35,
-    "title": "Sony WH-1000XM5 Wireless Headphones",
-    "price": 298,
-    "originalPrice": 458,
-    "rating": 4,
-    "reviews": 245
+    "image": BS_image_2,
+    "discount": 17,
+    "title": "Gucci duffle bag",
+    "price": 960,
+    "originalPrice": 1160,
+    "rating": 4.5,
+    "reviews": 65
   },
   {
     "id": 3,
-    "image": "https://via.placeholder.com/270x250/F5F5F5/000000?text=Smart+Watch",
-    "discount": 15,
-    "title": "Samsung Galaxy Watch 6",
-    "price": 189,
-    "originalPrice": 229,
-    "rating": 5,
-    "reviews": 67
+    "image": BS_image_3,
+    "discount": 6,
+    "title": "RGB liquid CPU Cooler",
+    "price": 160,
+    "originalPrice": 170,
+    "rating": 4.5,
+    "reviews": 65
   },
   {
     "id": 4,
-    "image": "https://via.placeholder.com/270x250/F5F5F5/000000?text=Mechanical+Keyboard",
-    "discount": 25,
-    "title": "Keychron K2 Mechanical Keyboard",
-    "price": 75,
-    "originalPrice": 99,
-    "rating": 4,
-    "reviews": 134
+    "image": BS_image_4,
+    "discount": 10 ,
+    "title": "Small BookSelf",
+    "price": 360,
+    "originalPrice": "400",
+    "rating": 5,
+    "reviews": 65
   }
 ]
