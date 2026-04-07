@@ -13,7 +13,7 @@ import Button from "../Button";
 
 const ExploreOurProducts = () => {
 	return (
-		<Section className={"pb-15 pt-18"}>
+		<Section className={"pb-42 pt-18"}>
 			<Container>
 				<div className="mb-10 grid grid-cols-[auto_1fr_auto] items-end gap-[87px]">
 					<SectionHeader title="Explore Our Products" subtitle="Our Products" />

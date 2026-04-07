@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React from "react";
-=======
-
->>>>>>> main
 import Section from "./Section";
 import Container from "./Container";
 import jbl from "../assets/jbl.png";
@@ -60,8 +56,4 @@ const Enhance = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Enhance;
-=======
-export default Enhance;
->>>>>>> main
