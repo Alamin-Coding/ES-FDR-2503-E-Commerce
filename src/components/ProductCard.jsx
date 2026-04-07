@@ -1,15 +1,18 @@
 import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 
-import card_1 from "../assets/card-image-1.png";
 import { Link } from "react-router";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({
+	product,
+	showPrice = true,
+	price_with_rating = false,
+}) => {
 	return (
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
 			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group min-h-[250px]">
 				<span className="absolute top-4 left-4 z-10 bg-secondary text-white rounded-xs inline-block py-1 px-2">
-					-20%
+					{product.discount}%
 				</span>
 				<img src={product.image} alt="image" />
 				<div className="space-y-4 absolute top-4 right-4 z-10 flex flex-col gap-1">
@@ -26,10 +29,19 @@ const ProductCard = ({ product }) => {
 			</div>
 			<div className="pt-4">
 				<h4 className="text-black font-medium">{product.title}</h4>
-				<p className="py-2">
-					<span className="text-secondary">${product.price}</span> <del>${product.oldPrice}</del>
-				</p>
-				<div className="flex justify-between items-center gap-3">
+				{showPrice && (
+					<p className="py-2">
+						<span className="text-secondary">${product.price}</span>{" "}
+						<del>${product.originalPrice}</del>
+					</p>
+				)}
+
+				<div className="flex items-center gap-3">
+					{price_with_rating && (
+						<p className="py-2">
+							<span className="text-secondary">${product.price}</span>
+						</p>
+					)}
 					<ul className="flex gap-2 items-center">
 						<li>
 							<StarIcon className="text-gold" />
@@ -47,7 +59,7 @@ const ProductCard = ({ product }) => {
 							<StarIcon className="text-gold" />
 						</li>
 					</ul>
-					<span>(88)</span>
+					<span>({product.reviews})</span>
 				</div>
 			</div>
 		</div>

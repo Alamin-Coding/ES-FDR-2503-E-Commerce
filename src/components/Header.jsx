@@ -19,8 +19,8 @@ const Header = () => {
 							<Link to={"/shop"}>ShopNow</Link>
 						</div>
 						<div className="flex justify-end">
-							<select name="" id="">
-								<option value="english" selected>
+							<select name="" id="" defaultValue={"english"}>
+								<option value="english" >
 									English
 								</option>
 								<option value="bangla">Bangla</option>
