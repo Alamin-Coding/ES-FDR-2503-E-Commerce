@@ -12,6 +12,9 @@ const HomePage = () => {
 			<FlashSale />
 			<Categories />
 			<BestSellingProducts />
+			<Enhance />
+			<ExploreOurProducts />
+			{/* <ContactCard /> */}
 		</div>
 	);
 };

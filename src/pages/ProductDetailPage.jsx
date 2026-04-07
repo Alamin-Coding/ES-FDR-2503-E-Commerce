@@ -1,20 +1,16 @@
-<<<<<<< HEAD
-import Section from "../components/Section";
-import Container from "../components/Container";
-import { HeartIcon, StarIcon } from "../components/icons";
-=======
+
 import React from "react";
 import Section from "../components/Section";
 import Container from "../components/Container";
 import { HeartIcon, StarIcon } from "../components/icons";
 import Button from "../components/Button";
->>>>>>> 19dd905 (ProductDetailpage create)
+
 // import Image for product veiw
 import Image1 from "../assets/image-1.png";
 import Image2 from "../assets/image-2.png";
 import Image3 from "../assets/image-3.png";
 import Image from "../assets/pimage.png";
-<<<<<<< HEAD
+
 import ProductCard from "../components/ProductCard";
 import delivery from "../assets/icons/icon-delivery.png";
 import preturn from "../assets/icons/icon-return.png";
@@ -165,110 +161,7 @@ const ProductDetailPage = () => {
 			</Container>
 		</Section>
 	);
-=======
 
-const ProductDetailPage = () => {
-  return (
-    <Section>
-      <Container>
-        <div className="grid grid-cols-[170px_500px_auto]  ">
-            <div className="flex flex-col gap-4 w-[170px]">
-              <img src={Image1} alt="Product1" />
-              <img src={Image2} alt="Product2" />
-              <img src={Image3} alt="Product3" />
-              <img src={Image} alt="Product4" />
-            </div>
-          <div className="w-full w-[500px]  pr-18.5 pl-8.5 ">
-            <img src={Image} alt="Product" />
-          </div>
-          <div>
-            <div>
-              <h2 className="text-[24px] font-bold text-[#000000] pb-4">
-                Havic HV G-92 Gamepad
-              </h2>
-              <div className="flex items-center">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map(() => (
-                    <StarIcon />
-                  ))}
-                </div>
-                <span className="text-sm font-normal pl-2 pr-4 border-r border-[#000000]/50 text-[#000000]/50">
-                  (150 Reviews)
-                </span>
-                <span className="text-sm font-normal text-[#00FF66]/60 pl-4">
-                  In Stock
-                </span>
-              </div>
-              <strong className="text-[24px] font-normal pt-4 text-[#000000]">
-                $192.00
-              </strong>
-              <p className="text-[14px] leading-[1.5] font-normal text-[#000000] max-w-[373px] py-6">
-                PlayStation 5 Controller Skin High quality vinyl with air
-                channel adhesive for easy bubble free install & mess free
-                removal Pressure sensitive.
-              </p>
-              <hr className="pb-10 text-[#000000]/50" />
-            </div>
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-6">
-                <strong className="text-[20px] font-regular text-[#000000] tracking-[3%]">
-                  {" "}
-                  Colours:
-                </strong>
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#000000] cursor-pointer"></div>
-                  <div className="w-6 h-6 rounded-full bg-[#FF0000] cursor-pointer"></div>
-                  <div className="w-6 h-6 rounded-full bg-[#00FF66] cursor-pointer"></div>
-                </div>
-              </div>
-              <div className="flex items-center gap-6">
-                <strong className="text-[20px] font-regular text-[#000000] tracking-[3%]">
-                  Size:
-                </strong>
-                <div className="flex items-center gap-4">
-                  <div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
-                    XS
-                  </div>
-                  <div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
-                    S
-                  </div>
-                  <div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
-                    M
-                  </div>
-                  <div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
-                    L
-                  </div>
-                  <div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
-                    G
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex border rounded">
-                  <div className=" w-10 h-11 border-r border-[#000000]/50  flex items-center justify-center">
-                    -
-                  </div>
-                  <span className="w-20 h-11 flex items-center justify-center">
-                    2
-                  </span>
-                  <div className=" w-10 h-11 border-l border-[#000000]/50  flex items-center justify-center bg-secondary text-white">
-                    +
-                  </div>
-                </div>
-                <button className="bg-primary text-white  py-2.5 px-12 rounded bg-secondary transition duration-300">
-                  Buy Now
-                </button>
-                <div className="w-11 h-11 border border-[#000000]/50 rounded flex items-center justify-center p-2 cursor-pointer">
-                  <HeartIcon />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </Section>
-  );
->>>>>>> 19dd905 (ProductDetailpage create)
 };
 
 export default ProductDetailPage;
