@@ -22,7 +22,7 @@ const LoginPage = () => {
             <form action="" className="flex flex-col gap-10 w-[370px]">
               <input
                 className="border-b border-border focus:outline-0 placeholder:text-[#000000]/40"
-                type="number"
+                type="text"
                 name=""
                 id=""
                 placeholder="Email or Phone Number"
