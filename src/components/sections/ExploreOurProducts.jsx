@@ -27,8 +27,10 @@ const ExploreOurProducts = () => {
 						<ProductCard key={product.id} product={product} price_with_rating={true} showPrice={false} />
 					))}
 				</div>
-				<div className="pt-15 text-center">
-					<Button TagName="a" href="/shop">View All Products</Button>
+				<div className="flex items-center justify-center pt-15 text-center">
+					<Button TagName="a" href="/shop">
+						View All Products
+					</Button>
 				</div>
 			</Container>
 		</Section>

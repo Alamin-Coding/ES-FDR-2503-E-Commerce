@@ -44,7 +44,7 @@ const FlashSale = () => {
 						<ProductCard key={product.id} product={product} />
 					))}
 				</div>
-				<div className="pt-10 text-center">
+				<div className="flex items-center justify-center pt-10 text-center">
 					<Button TagName="a" href="/shop">
 						View All Products
 					</Button>
