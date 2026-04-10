@@ -10,6 +10,7 @@ const HomePage = () => {
 			<FlashSale />
 			<Categories />
 			<BestSellingProducts />
+			
 		</div>
 	);
 };

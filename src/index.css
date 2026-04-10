@@ -20,6 +20,7 @@
   --color-gold: #FFAD33;
   --color-F5F5F5: #F5F5F5;
   --color-border: rgba(0, 0, 0, 0.3);
+   --color-black40: rgba(0, 0, 0, 0.4);
 }
 
 body {
