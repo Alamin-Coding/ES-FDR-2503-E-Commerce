@@ -195,4 +195,24 @@ export const ExploreOurProductsData = [
     "rating": 4.5,
     "reviews": 99
   },
+   {
+    "id": uuidv4(),
+    "image": OurProduct_image_3,
+    "discount": 30,
+    "title": "ASUS FHD Gaming Laptop",
+    "price": 700,
+    "originalPrice": 400,
+    "rating": 5,
+    "reviews": 325
+  },
+  {
+    "id": uuidv4(),
+    "image": FS_image_4,
+    "discount": 25,
+    "title": "S-Series Comfort Chair ",
+    "price": 375,
+    "originalPrice": 400,
+    "rating": 4.5,
+    "reviews": 99
+  },
 ]

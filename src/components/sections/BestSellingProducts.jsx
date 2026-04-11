@@ -6,6 +6,7 @@ import Section from "../Section";
 import Container from "../Container";
 import Arrows from "../Arrows";
 import { BestSellingProductsData } from "../../data";
+import Button from "../Button";
 
 const BestSellingProducts = () => {
 	return (
@@ -14,7 +15,7 @@ const BestSellingProducts = () => {
 				<div className="mb-10 grid grid-cols-[auto_1fr_auto] items-end gap-[87px]">
 					<SectionHeader title="Best Selling Products" subtitle="This Month" />
 					<div></div>
-					<Arrows />
+					<Button>View All</Button>
 				</div>
 				<div className="grid grid-cols-4 gap-6">
 					{BestSellingProductsData.map((product) => (
