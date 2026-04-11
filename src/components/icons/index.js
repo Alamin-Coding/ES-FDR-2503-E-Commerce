@@ -1,6 +1,6 @@
 import EyeIcon from "./EyeIcon";
 import StarIcon from "./StarIcon";
-import {HeartIcon} from "./HeartIcon";
+import { HeartIcon } from "./HeartIcon";
 import ArrowRight from "./ArrowLeft";
 import ArrowLeft from "./ArrowRight";
 import Mobile from "./Mobile";
@@ -13,5 +13,24 @@ import { ShopIcon } from "./ShopIcon";
 import { SaleIcon } from "./SaleIcon";
 import { MoneybagIcon } from "./MoneybagIcon";
 import { ShoppingbagIcon } from "./ShoppingbagIcon";
+import { DeleteIcon } from "./DeleteIcon";
+import { GoogleIcon } from "./GoogleIcon";
 
-export { EyeIcon, StarIcon, HeartIcon, ArrowRight, ArrowLeft, Mobile, Monitor, SecureIcon, DeliveryIcon, CustomerserviceIcon, ShopIcon, SaleIcon, MoneybagIcon, ShoppingbagIcon };
+export {
+	EyeIcon,
+	StarIcon,
+	HeartIcon,
+	ArrowRight,
+	ArrowLeft,
+	Mobile,
+	Monitor,
+	SecureIcon,
+	DeliveryIcon,
+	CustomerserviceIcon,
+	ShopIcon,
+	SaleIcon,
+	MoneybagIcon,
+	ShoppingbagIcon,
+	DeleteIcon,
+	GoogleIcon,
+};

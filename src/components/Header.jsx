@@ -4,8 +4,11 @@ import { Link } from "react-router";
 import searchIcon from "../assets/icons/search.png";
 import cartIcon from "../assets/icons/cart.png";
 import wishListIcon from "../assets/icons/Wishlist.png";
+import { User } from "lucide-react";
+import ProfileDropdown from "./ProfileDropdown";
 
 const Header = () => {
+	const user = null; // Replace with actual user data or authentication logic
 	return (
 		<div>
 			<div className="text-white bg-black py-2">
@@ -20,9 +23,7 @@ const Header = () => {
 						</div>
 						<div className="flex justify-end">
 							<select name="" id="" defaultValue={"english"}>
-								<option value="english" >
-									English
-								</option>
+								<option value="english">English</option>
 								<option value="bangla">Bangla</option>
 							</select>
 						</div>
@@ -75,6 +76,20 @@ const Header = () => {
 								<div className="cursor-pointer">
 									<img src={wishListIcon} alt="icon" />
 								</div>
+
+								{user && (
+									<div className="relative">
+										<div className="cursor-pointer group">
+											<User />
+
+											<ProfileDropdown
+												className={
+													"transition-all group-hover:visible invisible opacity-0 group-hover:opacity-100"
+												}
+											/>
+										</div>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

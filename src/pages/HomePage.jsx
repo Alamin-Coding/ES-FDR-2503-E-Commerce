@@ -7,6 +7,9 @@ import FlashSale from "../components/sections/FlashSale";
 import Service from "../components/sections/Service";
 
 const HomePage = () => {
+	// const pad = "2".padStart(3, "0"); //112
+
+	// console.log(pad)
 	return (
 		<div>
 			<Banner />

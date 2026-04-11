@@ -150,7 +150,7 @@ const Banner = () => {
 						</div> */}
 						<div className="w-[892px]">
 							<Swiper
-								pagination={true}
+								pagination={false}
 								modules={[Pagination]}
 								className="mySwiper"
 							>

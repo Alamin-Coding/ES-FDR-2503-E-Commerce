@@ -9,6 +9,9 @@ import ProductPage from "./pages/ProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
+import CheckoutPage from "./pages/CheckOutPage";
+import WishlistPage from "./pages/WishlistPage";
+import CartPage from "./pages/CartPage";
 
 const router = createBrowserRouter([
 	{
@@ -42,6 +45,18 @@ const router = createBrowserRouter([
 			{
 				path: "about-us",
 				element: <AboutPage />,
+			},
+			{
+				path: "checkout",
+				element: <CheckoutPage />,
+			},
+			{
+				path: "wishlist",
+				element: <WishlistPage />,
+			},
+			{
+				path: "cart",
+				element: <CartPage />,
 			},
 			{
 				path: "*",
