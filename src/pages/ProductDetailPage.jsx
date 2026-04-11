@@ -1,11 +1,16 @@
+
+import React from "react";
 import Section from "../components/Section";
 import Container from "../components/Container";
 import { HeartIcon, StarIcon } from "../components/icons";
+import Button from "../components/Button";
+
 // import Image for product veiw
 import Image1 from "../assets/image-1.png";
 import Image2 from "../assets/image-2.png";
 import Image3 from "../assets/image-3.png";
 import Image from "../assets/pimage.png";
+
 import ProductCard from "../components/ProductCard";
 import delivery from "../assets/icons/icon-delivery.png";
 import preturn from "../assets/icons/icon-return.png";
@@ -156,6 +161,7 @@ const ProductDetailPage = () => {
 			</Container>
 		</Section>
 	);
+
 };
 
 export default ProductDetailPage;
