@@ -46,6 +46,16 @@ export const FlashSellingProductsData = [
     "originalPrice": 400,
     "rating": 4.5,
     "reviews": 99
+  },
+  {
+    "id": FS_image_4,
+    "image": FS_image_4,
+    "discount": 25,
+    "title": "S-Series Comfort Chair ",
+    "price": 375,
+    "originalPrice": 400,
+    "rating": 4.5,
+    "reviews": 99
   }
 ]
 
