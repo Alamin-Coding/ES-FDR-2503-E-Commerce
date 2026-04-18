@@ -4,10 +4,28 @@ import Button from "../components/Button";
 import { Link } from "react-router";
 import { GoogleIcon } from "../components/icons/GoogleIcon";
 import SecondaryButton from "../components/SecondaryButton";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/authContext";
 const SignupPage = () => {
+	const { signUP, signUpWithGoogle } = useContext(AuthContext);
+
+	const [userValue, setUserValue] = useState({
+		email: "",
+		password: "",
+	});
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setUserValue((prev) => {
+			return { ...prev, [name]: value };
+		});
+	};
+	const handleSignup = () => {
+		signUP(userValue.email, userValue.password);
+	};
 	return (
 		<Section className="pt-15 pb-35">
-			<div className="grid grid-cols-[auto_1fr] items-center gap-[129px]">
+			<div className="grid grid-cols-2 items-center">
 				<div>
 					<img src={Side} alt="" />
 				</div>
@@ -22,28 +40,36 @@ const SignupPage = () => {
 						<input
 							className="border-b border-border focus:outline-0 placeholder:text-[#000000]/40"
 							type="text"
-							name=""
+							name="name"
 							id=""
 							placeholder="name"
+							onChange={(e) => handleInputChange(e)}
 						/>
 						<input
 							className="border-b border-border focus:outline-0 placeholder:text-[#000000]/40"
 							type="text"
-							name=""
+							name="email"
 							id=""
 							placeholder="Email or Phone Number"
+							onChange={(e) => handleInputChange(e)}
 						/>
 						<input
 							className="border-b border-border focus:outline-0 placeholder:text-[#000000]/40"
 							type="password"
-							name=""
+							name="password"
 							id=""
 							placeholder="Password"
+							onChange={(e) => handleInputChange(e)}
 						/>
 					</form>
 					<div className="flex flex-col items-center justify-between gap-4 w-full pt-10">
-						<Button className="w-full">Create Account</Button>
-						<SecondaryButton className="w-full bg-white !text-black">
+						<Button className="w-full" onClick={handleSignup}>
+							Create Account
+						</Button>
+						<SecondaryButton
+							onClick={() => signUpWithGoogle()}
+							className="w-full bg-white !text-black"
+						>
 							<GoogleIcon /> Sign up with Google
 						</SecondaryButton>
 					</div>

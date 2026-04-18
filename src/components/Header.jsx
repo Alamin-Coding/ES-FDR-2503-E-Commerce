@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router";
 
 import searchIcon from "../assets/icons/search.png";
@@ -6,9 +6,13 @@ import cartIcon from "../assets/icons/cart.png";
 import wishListIcon from "../assets/icons/Wishlist.png";
 import { User } from "lucide-react";
 import ProfileDropdown from "./ProfileDropdown";
+import { AuthContext } from "../context/authContext";
 
 const Header = () => {
-	const user = null; // Replace with actual user data or authentication logic
+	// const user = null; // Replace with actual user data or authentication logic
+	const {user} = useContext(AuthContext)
+
+	console.log(user)
 	return (
 		<div>
 			<div className="text-white bg-black py-2">
@@ -53,6 +57,9 @@ const Header = () => {
 									</li>
 									<li>
 										<Link to="/contact">Contact</Link>
+									</li>
+									<li>
+										<Link to="/signup">Sign up</Link>
 									</li>
 								</ul>
 							</nav>
