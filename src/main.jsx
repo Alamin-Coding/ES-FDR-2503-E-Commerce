@@ -6,12 +6,17 @@ import App from "./App.jsx";
 import ThemeProvider from "./context/ThemeContext.jsx";
 import AuthProvider from "./context/authContext.jsx";
 
+import { store } from "./store.js";
+import { Provider } from "react-redux";
+
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<ThemeProvider>
-			<AuthProvider>
-				<App />
-			</AuthProvider>
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider>
+				<AuthProvider>
+					<App />
+				</AuthProvider>
+			</ThemeProvider>
+		</Provider>
 	</StrictMode>,
 );

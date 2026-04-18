@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
 	const [user, setUser] = useState(null);
 	const signUP = (email, password) => {
-		setLoading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed up
@@ -32,7 +31,8 @@ const AuthProvider = ({ children }) => {
 			.catch((error) => {
 				const errorMessage = error.message;
 				console.error(errorMessage);
-			}).finally(() => setLoading(false));
+			})
+			.finally(() => setLoading(false));
 	};
 
 	const signUpWithGoogle = () => {
@@ -93,7 +93,15 @@ const AuthProvider = ({ children }) => {
 
 	return (
 		<AuthContext
-			value={{ user, loading, setUser, signUP, signUpWithGoogle, logOutUser, loginUser }}
+			value={{
+				user,
+				loading,
+				setUser,
+				signUP,
+				signUpWithGoogle,
+				logOutUser,
+				loginUser,
+			}}
 		>
 			{children}
 		</AuthContext>

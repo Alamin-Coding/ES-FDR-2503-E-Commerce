@@ -7,10 +7,12 @@ import wishListIcon from "../assets/icons/Wishlist.png";
 import { User } from "lucide-react";
 import ProfileDropdown from "./ProfileDropdown";
 import { AuthContext } from "../context/authContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 	// const user = null; // Replace with actual user data or authentication logic
 	const { user } = useContext(AuthContext);
+	const {value } = useSelector((state) => state.cart);
 
 	console.log(user);
 	return (
@@ -89,6 +91,7 @@ const Header = () => {
 							<div className="flex items-center gap-4">
 								<div className="cursor-pointer">
 									<img src={cartIcon} alt="icon" />
+									{value.length}
 								</div>
 								<div className="cursor-pointer">
 									<img src={wishListIcon} alt="icon" />
