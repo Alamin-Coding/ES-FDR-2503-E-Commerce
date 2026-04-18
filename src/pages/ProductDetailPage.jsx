@@ -1,4 +1,3 @@
-
 import React from "react";
 import Section from "../components/Section";
 import Container from "../components/Container";
@@ -91,19 +90,19 @@ const ProductDetailPage = () => {
 									Size:
 								</strong>
 								<div className="flex items-center gap-4">
-									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
+									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-my_secondary hover:text-white">
 										XS
 									</div>
-									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
+									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-my_secondary hover:text-white">
 										S
 									</div>
-									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
+									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-my_secondary hover:text-white">
 										M
 									</div>
-									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
+									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-my_secondary hover:text-white">
 										L
 									</div>
-									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-secondary hover:text-white">
+									<div className=" w-8 h-8 border border-[#000000]/50 rounded flex items-center justify-center hover:bg-my_secondary hover:text-white">
 										G
 									</div>
 								</div>
@@ -116,11 +115,11 @@ const ProductDetailPage = () => {
 									<span className="w-20 h-11 flex items-center justify-center">
 										2
 									</span>
-									<div className=" w-10 h-11 border-l border-[#000000]/50  flex items-center justify-center bg-secondary text-white">
+									<div className=" w-10 h-11 border-l border-[#000000]/50  flex items-center justify-center bg-my_secondary text-white">
 										+
 									</div>
 								</div>
-								<button className="bg-primary text-white  py-2.5 px-12 rounded bg-secondary transition duration-300">
+								<button className="bg-primary text-white  py-2.5 px-12 rounded bg-my_secondary transition duration-300">
 									Buy Now
 								</button>
 								<div className="w-11 h-11 border border-[#000000]/50 rounded flex items-center justify-center p-2 cursor-pointer">
@@ -161,7 +160,6 @@ const ProductDetailPage = () => {
 			</Container>
 		</Section>
 	);
-
 };
 
 export default ProductDetailPage;

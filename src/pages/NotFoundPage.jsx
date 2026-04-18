@@ -7,7 +7,7 @@ const NotFoundPage = () => {
 			<div className="container">
 				<div className="flex items-center gap-2 justify-start">
 					<span className="text-slate-300">Home</span>
-                    <span className="text-slate-300">/</span>
+					<span className="text-slate-300">/</span>
 					<span className="text-slate-800">404 Error</span>
 				</div>
 				<div className="text-center">
@@ -19,7 +19,7 @@ const NotFoundPage = () => {
 					</p>
 					<Link
 						to={"/"}
-						className="inline-block py-4 px-12 bg-secondary text-white rounded-sm"
+						className="inline-block py-4 px-12 bg-my_secondary text-white rounded-sm"
 					>
 						Back to home page
 					</Link>

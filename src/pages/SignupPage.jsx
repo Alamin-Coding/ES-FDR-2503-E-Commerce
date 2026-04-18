@@ -1,18 +1,22 @@
 import Section from "../components/Section";
 import Side from "../assets/side.jpg";
 import Button from "../components/Button";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { GoogleIcon } from "../components/icons/GoogleIcon";
 import SecondaryButton from "../components/SecondaryButton";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
+import Loading from "../components/Loading";
 const SignupPage = () => {
-	const { signUP, signUpWithGoogle } = useContext(AuthContext);
+	const { signUP, signUpWithGoogle, loading } = useContext(AuthContext);
 
 	const [userValue, setUserValue] = useState({
+		name: "",
 		email: "",
 		password: "",
 	});
+
+	const navigate = useNavigate();
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -20,9 +24,25 @@ const SignupPage = () => {
 			return { ...prev, [name]: value };
 		});
 	};
-	const handleSignup = () => {
-		signUP(userValue.email, userValue.password);
+	const handleSignup = async () => {
+		try {
+			const res = await signUP(userValue.email, userValue.password);
+			console.log("RESPONSE:  ", res);
+			setUserValue({
+				name: "",
+				email: "",
+				password: "",
+			});
+			// navigate("/login");
+		} catch (error) {
+			console.log(error);
+		}
 	};
+
+	if (loading) {
+		return <Loading />;
+	}
+
 	return (
 		<Section className="pt-15 pb-35">
 			<div className="grid grid-cols-2 items-center">
@@ -43,6 +63,7 @@ const SignupPage = () => {
 							name="name"
 							id=""
 							placeholder="name"
+							value={userValue.name}
 							onChange={(e) => handleInputChange(e)}
 						/>
 						<input
@@ -51,6 +72,7 @@ const SignupPage = () => {
 							name="email"
 							id=""
 							placeholder="Email or Phone Number"
+							value={userValue.email}
 							onChange={(e) => handleInputChange(e)}
 						/>
 						<input
@@ -59,6 +81,7 @@ const SignupPage = () => {
 							name="password"
 							id=""
 							placeholder="Password"
+							value={userValue.password}
 							onChange={(e) => handleInputChange(e)}
 						/>
 					</form>

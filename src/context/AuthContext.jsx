@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import {
 	createUserWithEmailAndPassword,
 	GoogleAuthProvider,
+	signInWithEmailAndPassword,
 	signInWithPopup,
 	signOut,
 } from "firebase/auth";
@@ -12,30 +13,26 @@ export const AuthContext = createContext({
 	setUser: () => {},
 	signUP: () => {},
 	signUpWithGoogle: () => {},
+
 	logOutUser: () => {},
 });
 
 const AuthProvider = ({ children }) => {
+	const [loading, setLoading] = useState(false);
 	const [user, setUser] = useState(null);
-
-	useEffect(() => {
-		const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-			setUser(currentUser);
-		});
-		return unsubscribe;
-	}, []);
-
 	const signUP = (email, password) => {
+		setLoading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed up
 				const user = userCredential.user;
+				setLoading(false);
 				console.log(user);
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
 				console.error(errorMessage);
-			});
+			}).finally(() => setLoading(false));
 	};
 
 	const signUpWithGoogle = () => {
@@ -65,23 +62,38 @@ const AuthProvider = ({ children }) => {
 			});
 	};
 
+	const loginUser = (email, password) => {
+		signInWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				auth.onAuthStateChanged((currentUser) => {
+					setUser(currentUser);
+				});
+				console.log(user);
+			})
+			.catch((error) => {
+				const errorMessage = error.message;
+				console.error(errorMessage);
+			});
+	};
+
 	const logOutUser = () => {
 		signOut(auth)
 			.then(() => {
 				alert("Sign out successfully");
+				auth.onAuthStateChanged((currentUser) => {
+					setUser(currentUser);
+				});
 			})
 			.catch((error) => {
 				console.error("Sign out error:", error.message);
 			});
 	};
 
-    const abc = () => {
-        console.log(user);
-    }
-
 	return (
 		<AuthContext
-			value={{ user, setUser, signUP, signUpWithGoogle, logOutUser, abc }}
+			value={{ user, loading, setUser, signUP, signUpWithGoogle, logOutUser, loginUser }}
 		>
 			{children}
 		</AuthContext>

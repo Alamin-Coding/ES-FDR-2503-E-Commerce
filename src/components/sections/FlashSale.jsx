@@ -30,17 +30,17 @@ const FlashSale = () => {
 								<span>Day's</span>
 								<strong className="text-[32px]">{days}</strong>
 							</div>
-							<span className="text-[30px] text-secondary">:</span>
+							<span className="text-[30px] text-my_secondary">:</span>
 							<div className="flex flex-col space-y-1">
 								<span>Hours</span>
 								<strong className="text-[32px]">{hours}</strong>
 							</div>
-							<span className="text-[30px] text-secondary">:</span>
+							<span className="text-[30px] text-my_secondary">:</span>
 							<div className="flex flex-col space-y-1">
 								<span>Minutes</span>
 								<strong className="text-[32px]">{minutes}</strong>
 							</div>
-							<span className="text-[30px] text-secondary">:</span>
+							<span className="text-[30px] text-my_secondary">:</span>
 							<div className="flex flex-col space-y-1">
 								<span>Seconds</span>
 								<strong className="text-[32px]">{seconds}</strong>
@@ -49,10 +49,16 @@ const FlashSale = () => {
 					</div>
 
 					<div className="flex items-center justify-end gap-4">
-						<button onClick={() => swiperRef.current.slideNext()}  className="size-[36px] rounded-full bg-slate-50 flex items-center justify-center cursor-pointer">
+						<button
+							onClick={() => swiperRef.current.slideNext()}
+							className="size-[36px] rounded-full bg-slate-50 flex items-center justify-center cursor-pointer"
+						>
 							<ArrowLeft />
 						</button>
-						<button onClick={() => swiperRef.current.slidePrev()}  className="size-[36px] rounded-full bg-slate-50 flex items-center justify-center cursor-pointer">
+						<button
+							onClick={() => swiperRef.current.slidePrev()}
+							className="size-[36px] rounded-full bg-slate-50 flex items-center justify-center cursor-pointer"
+						>
 							<ArrowRight />
 						</button>
 					</div>

@@ -11,7 +11,7 @@ const ProductCard = ({
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
 			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group min-h-[250px]">
-				<span className="absolute top-4 left-4 z-10 bg-secondary text-white rounded-xs inline-block py-1 px-2">
+				<span className="absolute top-4 left-4 z-10 bg-my_secondary text-white rounded-xs inline-block py-1 px-2">
 					{product.discount}%
 				</span>
 				<img src={product.image} alt="image" />
@@ -31,7 +31,7 @@ const ProductCard = ({
 				<h4 className="text-black font-medium">{product.title}</h4>
 				{showPrice && (
 					<p className="py-2">
-						<span className="text-secondary">${product.price}</span>{" "}
+						<span className="text-my_secondary">${product.price}</span>{" "}
 						<del>${product.originalPrice}</del>
 					</p>
 				)}
@@ -39,7 +39,7 @@ const ProductCard = ({
 				<div className="flex items-center gap-3">
 					{price_with_rating && (
 						<p className="py-2">
-							<span className="text-secondary">${product.price}</span>
+							<span className="text-my_secondary">${product.price}</span>
 						</p>
 					)}
 					<ul className="flex gap-2 items-center">

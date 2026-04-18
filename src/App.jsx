@@ -6,12 +6,13 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductPage from "./pages/ProductPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckOutPage";
 import WishlistPage from "./pages/WishlistPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import CartPage from "./pages/CartPage";
+import Loading from "./components/Loading";
 
 const router = createBrowserRouter([
 	{

@@ -31,7 +31,7 @@ const WishlistPage = () => {
 					<div className="space-y-6 pt-20">
 						<div className="flex justify-between items-end gap-6">
 							<p className="flex items-center gap-2">
-								<span className="h-10 w-5 bg-secondary rounded-sm inline-block"></span>
+								<span className="h-10 w-5 bg-my_secondary rounded-sm inline-block"></span>
 								<span className="text-black font-semibold">Just For You</span>
 							</p>
 							<SecondaryButton TagName={Link} to="/shop">

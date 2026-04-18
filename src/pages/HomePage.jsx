@@ -4,11 +4,9 @@ import BestSellingProducts from "../components/sections/BestSellingProducts";
 import Categories from "../components/sections/Categories";
 import ExploreOurProducts from "../components/sections/ExploreOurProducts";
 import FlashSale from "../components/sections/FlashSale";
+import Loading from "../components/Loading";
 
 const HomePage = () => {
-	// const pad = "2".padStart(3, "0"); //112
-
-	// console.log(pad)
 	return (
 		<div>
 			<Banner />

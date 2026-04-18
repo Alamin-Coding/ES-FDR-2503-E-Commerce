@@ -9,7 +9,7 @@ const WishlistProductCard = ({ product }) => {
 			{/* Image */}
 			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group min-h-[250px]">
 				{product.discount && (
-					<span className="absolute top-4 left-4 z-10 bg-secondary text-white rounded-xs inline-block py-1 px-2">
+					<span className="absolute top-4 left-4 z-10 bg-my_secondary text-white rounded-xs inline-block py-1 px-2">
 						{product.discount}%
 					</span>
 				)}
@@ -64,7 +64,7 @@ const WishlistProductCard = ({ product }) => {
 				<h4 className="text-black font-medium">{product.title}</h4>
 
 				<p className="py-2">
-					<span className="text-secondary">${product.price}</span>{" "}
+					<span className="text-my_secondary">${product.price}</span>{" "}
 					<del>${product.originalPrice}</del>
 				</p>
 			</div>

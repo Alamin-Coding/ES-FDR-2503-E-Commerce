@@ -10,9 +10,9 @@ import { AuthContext } from "../context/authContext";
 
 const Header = () => {
 	// const user = null; // Replace with actual user data or authentication logic
-	const {user} = useContext(AuthContext)
+	const { user } = useContext(AuthContext);
 
-	console.log(user)
+	console.log(user);
 	return (
 		<div>
 			<div className="text-white bg-black py-2">
@@ -47,19 +47,29 @@ const Header = () => {
 							<nav>
 								<ul className="flex items-center gap-5">
 									<li>
-										<Link to="/">Home</Link>
+										<Link className="text-black" to="/">
+											Home
+										</Link>
 									</li>
 									<li>
-										<Link to="/shop">Shop</Link>
+										<Link className="text-black" to="/shop">
+											Shop
+										</Link>
 									</li>
 									<li>
-										<Link to="/about">About</Link>
+										<Link className="text-black" to="/about">
+											About
+										</Link>
 									</li>
 									<li>
-										<Link to="/contact">Contact</Link>
+										<Link className="text-black" to="/contact">
+											Contact
+										</Link>
 									</li>
 									<li>
-										<Link to="/signup">Sign up</Link>
+										<Link className="text-black" to="/signup">
+											Sign up
+										</Link>
 									</li>
 								</ul>
 							</nav>
