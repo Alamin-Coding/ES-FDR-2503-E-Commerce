@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
 	// const user = null; // Replace with actual user data or authentication logic
 	const { user } = useContext(AuthContext);
-	const {value } = useSelector((state) => state.cart);
+	const { value } = useSelector((state) => state.cart);
 
 	console.log(user);
 	return (
@@ -89,13 +89,15 @@ const Header = () => {
 								</button>
 							</form>
 							<div className="flex items-center gap-4">
-								<div className="cursor-pointer">
+								<Link to="/cart" className="cursor-pointer relative">
 									<img src={cartIcon} alt="icon" />
-									{value.length}
-								</div>
-								<div className="cursor-pointer">
+									<span className="absolute top-0 right-0 z-10 size-4 rounded-full bg-my_secondary text-white text-[10px] flex items-center justify-center">
+										{value.length}
+									</span>
+								</Link>
+								<Link to="/wishlist" className="cursor-pointer">
 									<img src={wishListIcon} alt="icon" />
-								</div>
+								</Link>
 
 								{user && (
 									<div className="relative">

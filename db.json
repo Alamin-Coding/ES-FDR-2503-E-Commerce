@@ -1,0 +1,57 @@
+{
+	"flash-sales": [
+		{
+			"id": 1,
+			"thumbnail": "/images/flash-sale-1.png",
+			"discount": 40,
+			"title": "Breed Dry Dog Food",
+			"price": 100,
+			"originalPrice": 160,
+			"rating": 5,
+			"reviews": 25
+		},
+		{
+			"id": 2,
+			"thumbnail": "/images/flash-sale-2.png",
+			"discount": null,
+			"title": "CANON EOS DSLR Camera",
+			"price": 360,
+			"originalPrice": 1160,
+			"rating": 4,
+			"reviews": 95
+		},
+		{
+			"id": 3,
+			"thumbnail": "/images/flash-sale-3.png",
+			"discount": 30,
+			"title": "ASUS FHD Gaming Laptop",
+			"price": 700,
+			"originalPrice": 400,
+			"rating": 5,
+			"reviews": 65
+		},
+		{
+			"id": 4,
+			"thumbnail": "/images/flash-sale-4.png",
+			"discount": 30,
+			"title": "Breed Dry Dog Food",
+			"price": 100,
+			"originalPrice": 160,
+			"rating": 5,
+			"reviews": 25
+		}
+	],
+
+	"categories": [
+		{
+            "id": 1,
+			"title": "Phones",
+			"icon": "/images/category-icon-1.png"
+		},
+        {
+            "id": 2,
+            "title": "Computers",
+            "icon": "/images/category-icon-2.png"
+        }
+	]
+}

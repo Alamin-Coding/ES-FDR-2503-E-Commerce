@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "../ProductCard";
 import SectionHeader from "../SectionHeader";
 import { ArrowLeft, ArrowRight } from "../icons";
@@ -11,14 +11,21 @@ import useCountdown from "../../hooks/useCountdown";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import axios from "axios";
 
 // import 'swiper/css/navigation';
 const FlashSale = () => {
+	const [flashSaleData, setFlashSaleData] = useState([]);
 	const { formattedTimeLeft } = useCountdown("2026-04-30T11:59:59");
 	const { days, hours, minutes, seconds } = formattedTimeLeft;
 
 	const swiperRef = useRef(null);
 
+	useEffect(() => {
+		axios
+			.get("http://localhost:3000/flash-sales")
+			.then((data) => setFlashSaleData(data.data));
+	}, []);
 	return (
 		<Section className={"pb-15"}>
 			<Container className={"overflow-hidden"}>
@@ -75,7 +82,7 @@ const FlashSale = () => {
 						modules={[Autoplay]}
 						onSwiper={(swiper) => (swiperRef.current = swiper)}
 					>
-						{FlashSellingProductsData.map((product) => (
+						{flashSaleData?.map((product) => (
 							<SwiperSlide key={product.id}>
 								<ProductCard product={product} />
 							</SwiperSlide>

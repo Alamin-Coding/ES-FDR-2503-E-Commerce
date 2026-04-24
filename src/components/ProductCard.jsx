@@ -4,7 +4,7 @@ import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 import { Link } from "react-router";
 import { addToCart } from "../features/cart/cartSlice";
 
-const ProductCard = ({
+const ProductCardItem = ({
 	product,
 	showPrice = true,
 	price_with_rating = false,
@@ -22,10 +22,12 @@ const ProductCard = ({
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
 			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group min-h-[250px]">
-				<span className="absolute top-4 left-4 z-10 bg-my_secondary text-white rounded-xs inline-block py-1 px-2">
-					{product.discount}%
-				</span>
-				<img src={product.image} alt="image" />
+				{product.discount && (
+					<span className="absolute top-4 left-4 z-10 bg-my_secondary text-white rounded-xs inline-block py-1 px-2">
+						{product.discount}%
+					</span>
+				)}
+				<img src={product.thumbnail} alt="image" />
 				<div className="space-y-4 absolute top-4 right-4 z-10 flex flex-col gap-1">
 					<button>
 						<HeartIcon />
@@ -46,7 +48,7 @@ const ProductCard = ({
 				{showPrice && (
 					<p className="py-2">
 						<span className="text-my_secondary">${product.price}</span>{" "}
-						<del>${product.originalPrice}</del>
+						<del>${}</del>
 					</p>
 				)}
 
@@ -73,11 +75,11 @@ const ProductCard = ({
 							<StarIcon className="text-gold" />
 						</li>
 					</ul>
-					<span>({product.reviews})</span>
+					<span>({product.reviews.length})</span>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default ProductCard;
+export default ProductCardItem;
