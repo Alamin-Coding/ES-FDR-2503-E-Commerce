@@ -12,9 +12,8 @@ import { useSelector } from "react-redux";
 const Header = () => {
 	// const user = null; // Replace with actual user data or authentication logic
 	const { user } = useContext(AuthContext);
-	const { value } = useSelector((state) => state.cart);
+	const { cartList } = useSelector((state) => state.cart);
 
-	console.log(user);
 	return (
 		<div>
 			<div className="text-white bg-black py-2">
@@ -92,7 +91,7 @@ const Header = () => {
 								<Link to="/cart" className="cursor-pointer relative">
 									<img src={cartIcon} alt="icon" />
 									<span className="absolute top-0 right-0 z-10 size-4 rounded-full bg-my_secondary text-white text-[10px] flex items-center justify-center">
-										{value.length}
+										{cartList.length}
 									</span>
 								</Link>
 								<Link to="/wishlist" className="cursor-pointer">

@@ -27,7 +27,6 @@ const SignupPage = () => {
 	const handleSignup = async () => {
 		try {
 			const res = await signUP(userValue.email, userValue.password);
-			console.log("RESPONSE:  ", res);
 			setUserValue({
 				name: "",
 				email: "",

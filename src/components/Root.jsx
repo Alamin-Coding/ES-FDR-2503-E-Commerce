@@ -6,7 +6,6 @@ import { ThemeContext } from "../context/ThemeContext";
 
 const Root = () => {
 	const { theme,handleThemeChange } = useContext(ThemeContext);
-	console.log(theme);
 
 	return (
 		<main className="bg-slate-100 dark:bg-black dark:text-white">

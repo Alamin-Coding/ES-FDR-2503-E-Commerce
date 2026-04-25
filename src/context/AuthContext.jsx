@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
 				// Signed up
 				const user = userCredential.user;
 				setLoading(false);
-				console.log(user);
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
@@ -36,7 +35,6 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const signUpWithGoogle = () => {
-		console.log("Sign up with google");
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(auth, provider)
 			.then((result) => {
@@ -45,7 +43,6 @@ const AuthProvider = ({ children }) => {
 				const token = credential.accessToken;
 				// The signed-in user info.
 				const user = result.user;
-				console.log(user);
 			})
 			.catch((error) => {
 				// Handle Errors here.
@@ -70,7 +67,6 @@ const AuthProvider = ({ children }) => {
 				auth.onAuthStateChanged((currentUser) => {
 					setUser(currentUser);
 				});
-				console.log(user);
 			})
 			.catch((error) => {
 				const errorMessage = error.message;

@@ -9,13 +9,18 @@ const ProductCardItem = ({
 	showPrice = true,
 	price_with_rating = false,
 }) => {
-	const { value } = useSelector((state) => state.cart);
+	const { cartList } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
-	console.log(value);
-
+	const isCartItem = cartList.find((item) => item.id === product.id);
 	const handleAddToCart = () => {
-		dispatch(addToCart(product));
+		console.log(cartList)
+		if (!isCartItem) {
+			dispatch(addToCart({
+				...product,
+				quantity: 1
+			}));
+		}
 	};
 
 	return (
@@ -38,9 +43,9 @@ const ProductCardItem = ({
 				</div>
 				<button
 					onClick={handleAddToCart}
-					className="flex justify-center text-white bg-black absolute w-full px-2 py-2 bottom-1 group-hover:bottom-0 cursor-pointer opacity-0 group-hover:opacity-100 transition-all"
+					className={`flex justify-center text-white bg-black absolute w-full px-2 py-2 bottom-1 group-hover:bottom-0 ${isCartItem ? "cursor-not-allowed" : "cursor-pointer"} opacity-0 group-hover:opacity-100 transition-all`}
 				>
-					Add To Cart
+					{isCartItem ? "Already in cart" : "Add to cart"}
 				</button>
 			</div>
 			<div className="pt-4">

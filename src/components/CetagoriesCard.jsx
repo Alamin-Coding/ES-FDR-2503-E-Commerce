@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const CetagoriesCard = () => {
-	console.log("djjsljfldksjtr tretrept r");
 	const [cardData, setCardData] = useState([]);
 
 	useEffect(() => {

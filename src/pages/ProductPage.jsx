@@ -8,107 +8,14 @@ import { useEffect, useState } from "react";
 import ProductCardItem from "../components/ProductCard";
 
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { activeCategory } from "../features/shop/shopSlice";
 
-// const menus = [
-// 	{
-// 		id: uuidv4(),
-// 		title: "Woman’s Fashion",
-// 		link: "/",
-// 		submenu: [
-// 			{
-// 				id: 1,
-// 				title: "Dresses",
-// 				link: "/",
-// 			},
-// 			{
-// 				id: 2,
-// 				title: "Tops",
-// 				link: "/",
-// 			},
-// 			{
-// 				id: 3,
-// 				title: "Sweaters",
-// 				link: "/",
-// 			},
-// 			{
-// 				id: 4,
-// 				title: "Jeans",
-// 				link: "/",
-// 			},
-// 			{
-// 				id: 5,
-// 				title: "Shoes",
-// 				link: "/",
-// 			},
-// 		],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Men’s Fashion",
-// 		link: "/",
-// 		submenu: [
-// 			{
-// 				id: uuidv4(),
-// 				title: "Shirts",
-// 				link: "/",
-// 			},
-// 			{
-// 				id: uuidv4(),
-// 				title: "Jeans",
-// 				link: "/",
-// 			},
-// 			{
-// 				id: uuidv4(),
-// 				title: "Shoes",
-// 				link: "/",
-// 			},
-// 		],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Electronics",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Home & Lifestyle",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Medicine",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Sports & Outdoor",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Baby’s & Toys",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Groceries &",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// 	{
-// 		id: uuidv4(),
-// 		title: "Health & Beauty",
-// 		link: "/",
-// 		submenu: [],
-// 	},
-// ];
 
 const ProductPage = () => {
+	const { activeMenu } = useSelector((state) => state.shop);
+	const dispatch = useDispatch();
+	console.log(activeMenu);
 	const [endCount, setEndCount] = useState(6);
 	const [startCount, setStartCount] = useState(0);
 	const [menus, setMenus] = useState([]);
@@ -135,10 +42,13 @@ const ProductPage = () => {
 		setEndCount(value);
 	};
 	const handleFilter = (category) => {
-		setUrl(category);
+		setUrl(category.url);
+		dispatch(activeCategory(category.name));
 	};
 
-	console.log(products);
+
+
+	console.log(activeMenu)
 
 	return (
 		<Section className={"pb-40"}>
@@ -152,12 +62,21 @@ const ProductPage = () => {
 					<div>
 						<div className="pr-4 pt-10">
 							<p className="text-xl pb-4">Shop by Category</p>
+							<li
+								className={`text-black flex justify-between gap-2 items-center cursor-pointer hover:text-my_secondary mb-4 ${activeMenu === "All" && "text-my_secondary"}`}
+								onClick={() => {
+									setUrl("https://dummyjson.com/products");
+									dispatch(activeCategory("All"));
+								}}
+							>
+								<span>All</span>
+							</li>
 							<ul className="space-y-4">
 								{menus?.map((menu) => (
 									<li
 										key={menu.id}
-										className="text-black flex justify-between gap-2 items-center cursor-pointer hover:text-my_secondary"
-										onClick={() => handleFilter(menu.url)}
+										className={`text-black flex justify-between gap-2 items-center cursor-pointer hover:text-my_secondary ${activeMenu === menu.name && "text-my_secondary"}`}
+										onClick={() => handleFilter(menu)}
 									>
 										<span>{menu.name}</span>
 									</li>

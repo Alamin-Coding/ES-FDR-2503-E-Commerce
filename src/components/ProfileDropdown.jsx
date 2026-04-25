@@ -17,8 +17,6 @@ const menuItems = [
 ];
 const ProfileDropdown = ({ className }) => {
 	const { user, logOutUser, abc } = useContext(AuthContext);
-
-	console.log(abc);
 	return (
 		<div className={`absolute top-6 right-0 mt-2 z-30 ${className}`}>
 			<div className="bg-[#1e1b3a] rounded-xl p-2 w-56 border border-white/10 shadow-lg">

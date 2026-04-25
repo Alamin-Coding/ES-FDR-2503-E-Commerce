@@ -1,23 +1,28 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import Section from "./Section";
 import Container from "./Container";
 import Cart_1 from "./../assets/cart-1.png";
 import Cart_2 from "./../assets/cart-2.png";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router";
-
-const cartItems = [
-	{
-		id: 1,
-		name: "LCD Monitor",
-		price: 650,
-		quantity: 1,
-		image: Cart_1,
-	},
-	{ id: 2, name: "H1 Gamepad", price: 550, quantity: 2, image: Cart_2 },
-];
+import { useSelector } from "react-redux";
 
 const CartTable = () => {
+	const [totalItem, setTotalItem] = useState(1);
+	const { cartList } = useSelector((state) => state.cart);
+	console.log(cartList);
+
+	const handleQuantity = (value, id) => {
+		console.log(value, id);
+	};
+	const handleIncrement = (id) => {
+		const totalCartItem = cartList.map((item) => item.id === id);
+		console.log(totalCartItem);
+	};
+	const handleDecrement = () => {
+		setTotalItem(totalItem - 1);
+	};
+
 	return (
 		<Section>
 			<Container>
@@ -31,40 +36,53 @@ const CartTable = () => {
 					</Link>
 				</div>
 				<div className="w-full space-y-10 mt-10.5">
-					<div className="grid grid-cols-4 justify-items-center gap-45 items-center text-black text-[16px] pl-10 pr-15 py-6 shadow-sm rounded-md">
-						<span>Product</span>
-						<span>Price</span>
-						<span>Quantity</span>
-						<span>Subtotal</span>
-					</div>
-					{cartItems.map((item) => (
-						<div
-							key={item.id}
-							className="grid grid-cols-4 justify-items-center gap-45 items-center text-black text-[16px] pl-10 pr-15 py-6 shadow-sm rounded-md "
-						>
-							<div className="flex items-center gap-3">
-								<img
-									src={item.image}
-									alt={item.name}
-									className="w-14 h-14 object-contain"
-								/>
-								<span className="text-gray-700 whitespace-nowrap">
-									{item.name}
-								</span>
-							</div>
-							<span className="text-gray-700">${item.price}</span>
-							<div className="w-16 border border-gray-300 rounded-md px-2 py-1 text-center flex items-center justify-between">
-								<span>{item.quantity}</span>
-								<span>
-									<ChevronUp className="w-4 h-4 cursor-pointer" />
-									<ChevronDown className="w-4 h-4 cursor-pointer" />
-								</span>
-							</div>
-							<span className="text-right text-gray-700">
-								${item.price * item.quantity}
-							</span>
-						</div>
-					))}
+					<table className="w-full">
+						<tr className="text-black text-[16px] pl-10 pr-15 py-6 shadow-sm rounded-md">
+							<td className="px-5 h-[72px]">Product</td>
+							<td className="px-5 h-[72px]">Price</td>
+							<td className="px-5 h-[72px] text-center">Quantity</td>
+							<td className="px-5 h-[72px] text-right">Subtotal</td>
+						</tr>
+						{cartList.map((item) => (
+							<tr className="text-black text-[16px] pl-10 pr-15 py-6 shadow-sm rounded-md">
+								<td className="px-5 h-[72px]">
+									<div className="flex items-center gap-2">
+										<div className="size-[54px] overflow-hidden">
+											<img
+												src={item.thumbnail}
+												alt="image"
+												className="h-full"
+											/>
+										</div>
+										<p>{item.title}</p>
+									</div>
+								</td>
+								<td className="px-5 h-[72px]">${item.price}</td>
+								<td className="px-5 h-[72px] text-center">
+									<div className="border p-1 w-[72px] h-12 rounded flex items-center gap-1 justify-between">
+										<span className="mx-2">{item.quantity}</span>
+										<div className="flex flex-col">
+											<button
+												className="cursor-pointer"
+												onClick={() => handleIncrement(item.id)}
+											>
+												<ChevronUp size={16} />
+											</button>
+											<button
+												className="cursor-pointer"
+												onClick={() => handleDecrement(item.quantity, item.id)}
+											>
+												<ChevronDown size={16} />
+											</button>
+										</div>
+									</div>
+								</td>
+								<td className="px-5 h-[72px] text-right">
+									{item.price * item.quantity}
+								</td>
+							</tr>
+						))}
+					</table>
 				</div>
 				<div className="flex justify-between items-center mt-6 pb-10">
 					<button className=" text-black py-4 px-12 rounded-md border border-gray-500 cursor-pointer">
