@@ -21,6 +21,14 @@ const UseCountDown = (targetDate, onExpiry) => {
         setExpired(false);
       } else {
         setExpired(true);
+        setCountdown({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        if (onExpiry) onExpiry();  
+        return true; 
       }
     };
 
