@@ -4,8 +4,10 @@ import { Link } from "react-router";
 import searchIcon from "../assets/icons/search.png";
 import cartIcon from "../assets/icons/cart.png";
 import wishListIcon from "../assets/icons/Wishlist.png";
+import { User } from "lucide-react";
 
 const Header = () => {
+	const user = null; // Replace with actual user authentication logic
 	return (
 		<div>
 			<div className="text-white bg-black py-2">
@@ -53,6 +55,9 @@ const Header = () => {
 									<li>
 										<Link to="/contact">Contact</Link>
 									</li>
+									<li>
+										<Link to="/signup">Sign Up</Link>
+									</li>
 								</ul>
 							</nav>
 						</div>
@@ -69,12 +74,23 @@ const Header = () => {
 								</button>
 							</form>
 							<div className="flex items-center gap-4">
-								<div className="cursor-pointer">
+								<div className="cursor-pointer relative">
 									<img src={cartIcon} alt="icon" />
+									<span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -right-2">
+										0
+									</span>
 								</div>
-								<div className="cursor-pointer">
+								<div className="cursor-pointer relative">
 									<img src={wishListIcon} alt="icon" />
+									<span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -right-2">
+										0
+									</span>
 								</div>
+								{user?
+									<div className="cursor-pointer">
+										<User size={20} />	
+									</div>
+								: null}
 							</div>
 						</div>
 					</div>

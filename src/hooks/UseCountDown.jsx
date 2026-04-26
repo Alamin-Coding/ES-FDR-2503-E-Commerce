@@ -27,12 +27,15 @@ const UseCountDown = (targetDate, onExpiry) => {
           minutes: 0,
           seconds: 0,
         });
-        if (onExpiry) onExpiry();  
-        return true; 
+          setExpired((prev)=> {
+          if(!prev) onExpire?.();
+          return true;
+        });
       }
     };
 
     calculate();
+
     const interval = setInterval(calculate, 1000);
     return () => clearInterval(interval);   
   }, [targetDate]);
@@ -46,7 +49,7 @@ const UseCountDown = (targetDate, onExpiry) => {
   };
 
   return {...countdown, expired, formattedTimeLeft};
-console.log(countdown);
+
 };
 
 export default UseCountDown;

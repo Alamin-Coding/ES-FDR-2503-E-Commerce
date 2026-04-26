@@ -10,7 +10,7 @@ import Button from "../Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import UseCountDown from "../../hooks/UseCountDown";
 const FlashSale = () => {
-const {formattedTimeLeft}= UseCountDown("2026-12-31T23:59:59") ;
+const {formattedTimeLeft}= UseCountDown("2026-04-26T18:48:59") ;
 const {days, hours, minutes, seconds} = formattedTimeLeft;
   const swiperRef = useRef(null);
   return (
