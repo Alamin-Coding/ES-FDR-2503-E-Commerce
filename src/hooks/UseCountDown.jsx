@@ -46,6 +46,7 @@ const UseCountDown = (targetDate, onExpiry) => {
   };
 
   return {...countdown, expired, formattedTimeLeft};
+console.log(countdown);
 };
 
 export default UseCountDown;
