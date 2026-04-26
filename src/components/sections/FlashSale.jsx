@@ -8,8 +8,10 @@ import Arrows from "../Arrows";
 import { FlashSellingProductsData } from "../../data";
 import Button from "../Button";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import UseCountDown from "../../hooks/UseCountDown";
 const FlashSale = () => {
+const {formattedTimeLeft}= UseCountDown("2026-12-31T23:59:59") ;
+const {days, hours, minutes, seconds} = formattedTimeLeft;
   const swiperRef = useRef(null);
   return (
     <Section className={"pb-15"}>
@@ -20,22 +22,22 @@ const FlashSale = () => {
             <div className="flex items-center gap-3">
               <div className="flex flex-col space-y-1">
                 <span>Day's</span>
-                <strong className="text-[32px]">03</strong>
+                <strong className="text-[32px]">{days}</strong>
               </div>
               <span className="text-[30px] text-secondary">:</span>
               <div className="flex flex-col space-y-1">
                 <span>Hours</span>
-                <strong className="text-[32px]">03</strong>
+                <strong className="text-[32px]">{hours}</strong>
               </div>
               <span className="text-[30px] text-secondary">:</span>
               <div className="flex flex-col space-y-1">
                 <span>Minutes</span>
-                <strong className="text-[32px]">03</strong>
+                <strong className="text-[32px]">{ minutes}</strong>
               </div>
               <span className="text-[30px] text-secondary">:</span>
               <div className="flex flex-col space-y-1">
                 <span>Seconds</span>
-                <strong className="text-[32px]">03</strong>
+                <strong className="text-[32px]">{seconds}</strong>
               </div>
             </div>
           </div>
