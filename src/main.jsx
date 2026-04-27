@@ -1,14 +1,18 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import 'swiper/css';
+import "swiper/css";
 import App from "./App.jsx";
+import {store} from "./store.js";
+import { Provider } from "react-redux";
 import ThemeProvider from "./context/ThemeContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-	<StrictMode>
-		<ThemeProvider>
-			<App />
-		</ThemeProvider>
-	</StrictMode>,
+  <StrictMode>
+    <Provider store={store}>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </StrictMode>,
 );

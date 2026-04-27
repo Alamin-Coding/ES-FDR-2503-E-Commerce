@@ -74,18 +74,18 @@ const Header = () => {
 								</button>
 							</form>
 							<div className="flex items-center gap-4">
-								<div className="cursor-pointer relative">
+								<Link to={"cart"} className="cursor-pointer relative">
 									<img src={cartIcon} alt="icon" />
 									<span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -right-2">
 										0
 									</span>
-								</div>
-								<div className="cursor-pointer relative">
+								</Link>
+								<Link className="cursor-pointer relative">
 									<img src={wishListIcon} alt="icon" />
 									<span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -right-2">
 										0
 									</span>
-								</div>
+								</Link>
 								{user?
 									<div className="cursor-pointer">
 										<User size={20} />	

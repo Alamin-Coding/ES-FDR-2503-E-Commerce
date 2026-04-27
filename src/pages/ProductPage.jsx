@@ -5,6 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router";
 // import { ExploreOurProductsData } from "../data";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { activeCategory } from "../features/shop/shopSlice";
+import Cetagories from "../components/sections/Categories";
 
 // const menus = [
 // 	{
@@ -106,6 +109,9 @@ import { useEffect, useState } from "react";
 // ];
 
 const ProductPage = () => {
+  const {activeMenu} = useSelector((state)=> state.shop);
+  console.log(activeMenu);
+  const dispatch = useDispatch();
   const [menu, setMenu] = useState([]);
   const [products, setProducts] = useState([]);
   const [startCount, setStartCount] = useState(0);
@@ -118,9 +124,10 @@ const ProductPage = () => {
   };
 
   const handleFilter = (category) => {
-	setUrl(category);
-  }
-
+    setUrl(category.url);
+    dispatch(activeCategory(category.name))
+  };
+  console.log(activeMenu);
 
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
@@ -144,27 +151,39 @@ const ProductPage = () => {
           <div>
             <div className="pr-4 pt-10">
               <p className="text-xl pb-4">Shop by Category</p>
+            
+                <li
+                onClick={()=> {setUrl("https://dummyjson.com/products");
+                   dispatch(activeCategory("All"))
+                }}
+               
+                // title={menu.id}
+                    className={`text-black flex justify-between gap-2 items-center cursor-pointer hover:text-red-500 ${activeMenu === "All" && "text-red-500"}`}
+                  >
+                    <span>All</span>
+                  </li>
+            
               <ul className="space-y-4">
                 {menu.map((menu) => (
                   <li
                     key={menu.id}
-					onClick={()=>handleFilter(menu.url)}
+                    onClick={() => handleFilter(menu)}
                     // title={menu.id}
-                    className="text-black flex justify-between gap-2 items-center cursor-pointer"
+                    className={`text-black hover:text-red-500 flex justify-between gap-2 items-center cursor-pointer ${activeMenu === menu.name && "text-green-600"}`}
                   >
-                    {/* <Link to={menu.url}>{menu.name}</Link> */}
-					<span>{menu.name}</span>
-                    {/* {menu.submenu.length > 0 && (
-                                        <ul>
-                                            {menu.submenu.map((submenu) => (
-                                                <li key={submenu.id}>
-                                                    <Link to={submenu.link}>{submenu.title}</Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )} */}
+                    <span>{menu.name}</span>
                   </li>
                 ))}
+                {/* <Link to={menu.url}>{menu.name}</Link> */}
+                {/* {menu.submenu.length > 0 && (
+                                    <ul>
+                                        {menu.submenu.map((submenu) => (
+                                            <li key={submenu.id}>
+                                                <Link to={submenu.link}>{submenu.title}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )} */}
               </ul>
             </div>
             <div className="pr-4 pt-10">
