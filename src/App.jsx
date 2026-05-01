@@ -11,58 +11,63 @@ import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CartPage from "./pages/CartPage";
+import Account from "./components/account/Account";
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Root />,
-		children: [
-			{
-				index: true,
-				element: <HomePage />,
-			},
-			{
-				path: "login",
-				element: <LoginPage />,
-			},
-			{
-				path: "signup",
-				element: <SignupPage />,
-			},
-			{
-				path: "contact",
-				element: <ContactPage />,
-			},
-			{
-				path: "shop",
-				element: <ProductPage />,
-			},
-			{
-				path: "shop/:id",
-				element: <ProductDetailPage />,
-			},
-			{
-				path: "about",
-				element: <AboutPage />,
-			},
-			{
-path:"checkout",
-element:<CheckoutPage />
-			},
-			{
-path:"cart",
-element:<CartPage />
-			},
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "signup",
+        element: <SignupPage />,
+      },
+      {
+        path: "contact",
+        element: <ContactPage />,
+      },
+      {
+        path: "shop",
+        element: <ProductPage />,
+      },
+      {
+        path: "shop/:id",
+        element: <ProductDetailPage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "checkout",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
+      },
+	  {
+		path:"account",
+		element: <Account />
+	  },
 
-			{
-				path: "*",
-				element: <NotFoundPage />,
-			},
-		],
-	},
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
+    ],
+  },
 ]);
 const App = () => {
-	return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 };
 
 export default App;
