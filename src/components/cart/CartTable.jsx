@@ -5,7 +5,7 @@ import Cart_1 from "../../assets/remote.svg";
 import Cart_2 from "../../assets/tv.svg";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const CartTable = () => {
 	const [totalItem, setTotalItem] = useState(1);
@@ -49,7 +49,7 @@ const CartTable = () => {
 									<div className="flex items-center gap-2">
 										<div className="size-[54px] overflow-hidden">
 											<img
-												src={item.thumbnail}
+												src={item.image || item.thumbnail}
 												alt="image"
 												className="h-full"
 											/>

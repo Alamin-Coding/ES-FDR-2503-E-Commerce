@@ -1,12 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 
 import { Link } from "react-router";
+import { addToCart } from "../features/cart/cartSlice";
 
 const ProductCardss = ({
 	product,
 	showPrice = true,
 	price_with_rating = false,
 }) => {
+
+	const dispatch = useDispatch();
+	const { cartList } = useSelector((state) => state.cart);
+
 	return (
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
@@ -23,9 +29,9 @@ const ProductCardss = ({
 						<EyeIcon />
 					</button>
 				</div>
-				<button className="flex justify-center text-white bg-black absolute w-full px-2 py-2 bottom-1 group-hover:bottom-0 cursor-pointer opacity-0 group-hover:opacity-100 transition-all">
-					Add To Cart
-				</button>
+			<button onClick={()=>dispatch(addToCart(product))} className="flex justify-center text-white bg-black absolute w-full px-2 py-2 bottom-1 group-hover:bottom-0 cursor-pointer opacity-0 group-hover:opacity-100 transition-all">
+								Add To Cart
+							</button>
 			</div>
 			<div className="pt-4">
 				<h4 className="text-black font-medium">{product.title}</h4>

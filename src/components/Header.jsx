@@ -5,8 +5,11 @@ import searchIcon from "../assets/icons/search.png";
 import cartIcon from "../assets/icons/cart.png";
 import wishListIcon from "../assets/icons/Wishlist.png";
 import { User } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+	const { cartList } = useSelector((state) => state.cart);
+
 	const user = null; // Replace with actual user authentication logic
 	return (
 		<div>
@@ -77,7 +80,7 @@ const Header = () => {
 								<Link to={"cart"} className="cursor-pointer relative">
 									<img src={cartIcon} alt="icon" />
 									<span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -right-2">
-										0
+										{cartList.length}
 									</span>
 								</Link>
 								<Link className="cursor-pointer relative">

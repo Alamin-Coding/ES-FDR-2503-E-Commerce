@@ -8,14 +8,14 @@ const CartTotal = () => {
 	return (
 		<Section className="pb-35">
 			<Container>
-				<div className="flex items-start gap-[173px]">
-					<div className="flex items-center gap-4 ">
+				<div className="flex items-start  justify-between gap-[123px]">
+					<div className="flex items-center justify-center gap-4">
 						<input
 							type="text"
 							placeholder="Coupon Code"
 							className="py-4 pl-6 w-[300px] border border-gray-500"
 						/>
-						<Button TagName={Link} href="/checkout" className="mt-4 mb-8 ">
+						<Button TagName={Link} href="/checkout" className="">
 							Apply Coupon
 						</Button>
 					</div>
