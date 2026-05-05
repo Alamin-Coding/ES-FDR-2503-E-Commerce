@@ -31,3 +31,7 @@ body {
   margin-top: 40px !important;
   bottom: auto !important;
 }
+
+.dark ul li a {
+  color: white;
+}
