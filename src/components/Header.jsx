@@ -13,6 +13,7 @@ const Header = () => {
 	// const user = null; // Replace with actual user data or authentication logic
 	const { user } = useContext(AuthContext);
 	const { cartList } = useSelector((state) => state.cart);
+	const { wishList } = useSelector((state) => state.wishlist);
 
 	return (
 		<div>
@@ -94,8 +95,11 @@ const Header = () => {
 										{cartList.length}
 									</span>
 								</Link>
-								<Link to="/wishlist" className="cursor-pointer">
+								<Link to="/wishlist" className="cursor-pointer relative">
 									<img src={wishListIcon} alt="icon" />
+									<span className="absolute top-0 right-0 z-10 size-4 rounded-full bg-my_secondary text-white text-[10px] flex items-center justify-center">
+										{wishList.length}
+									</span>
 								</Link>
 
 								{user && (

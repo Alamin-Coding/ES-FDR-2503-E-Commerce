@@ -9,8 +9,10 @@ import WishlistProductCard from "../components/WishlistProductCard";
 
 import { BestSellingProductsData, ExploreOurProductsData } from "../data";
 import SecondaryButton from "../components/SecondaryButton";
+import { useSelector } from "react-redux";
 
 const WishlistPage = () => {
+	const { wishList } = useSelector((state) => state.wishlist);
 	return (
 		<Section className={"pt-20 pb-35 bg-white"}>
 			<Container>
@@ -21,7 +23,7 @@ const WishlistPage = () => {
 					</div>
 
 					<div className="grid grid-cols-4 gap-6">
-						{ExploreOurProductsData.map((product) => (
+						{wishList.map((product) => (
 							<div key={product.id}>
 								<WishlistProductCard product={product} />
 							</div>

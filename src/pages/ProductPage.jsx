@@ -11,7 +11,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { activeCategory } from "../features/shop/shopSlice";
 
-
 const ProductPage = () => {
 	const { activeMenu } = useSelector((state) => state.shop);
 	const dispatch = useDispatch();
@@ -24,14 +23,16 @@ const ProductPage = () => {
 
 	const [products, setProducts] = useState([]);
 	const [showCount, setShowCount] = useState(6);
+	const [loading, setLoading] = useState(true);
 	const handleShowMore = (value) => {
 		setShowCount(value);
 	};
 
 	useEffect(() => {
-		axios
-			.get("https://dummyjson.com/products/categories")
-			.then((data) => setMenus(data.data));
+		axios.get("https://dummyjson.com/products/categories").then((data) => {
+			setMenus(data.data);
+			setLoading(false);
+		});
 	}, []);
 
 	useEffect(() => {
@@ -45,10 +46,6 @@ const ProductPage = () => {
 		setUrl(category.url);
 		dispatch(activeCategory(category.name));
 	};
-
-
-
-	console.log(activeMenu)
 
 	return (
 		<Section className={"pb-40"}>
@@ -119,6 +116,9 @@ const ProductPage = () => {
 							</p>
 						</div>
 						<div className="grid grid-cols-3 gap-x-6 gap-y-10">
+							{loading && (
+								<p className="p-20 bg-amber-500 text-white">Loading.....</p>
+							)}
 							{products?.slice(startCount, endCount)?.map((item) => (
 								<ProductCardItem key={item.id} product={item} />
 								// <p>{item.title}</p>

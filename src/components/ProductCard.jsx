@@ -3,6 +3,18 @@ import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 
 import { Link } from "react-router";
 import { addToCart } from "../features/cart/cartSlice";
+import { addTowishlist } from "../features/wishlist/wishlistSlice";
+import { Heart } from "lucide-react";
+
+// interface Product {
+// 	id: 1;
+// 	title?: string;
+// }
+// interface ProductCardProps {
+// 	product: Product[];
+// 	showPrice?: boolean;
+// 	price_with_rating?: boolean;
+// }
 
 const ProductCardItem = ({
 	product,
@@ -10,17 +22,31 @@ const ProductCardItem = ({
 	price_with_rating = false,
 }) => {
 	const { cartList } = useSelector((state) => state.cart);
+	const { wishList } = useSelector((state) => state.wishlist);
+
 	const dispatch = useDispatch();
 
 	const isCartItem = cartList.find((item) => item.id === product.id);
 	const handleAddToCart = () => {
-		console.log(cartList)
 		if (!isCartItem) {
-			dispatch(addToCart({
-				...product,
-				quantity: 1
-			}));
+			dispatch(
+				addToCart({
+					...product,
+					quantity: 1,
+				}),
+			);
 		}
+	};
+
+	const checkItemAddedInWishlist = (id) =>
+		wishList.find((item) => item.id == id);
+
+	const handleAddToWishlist = (id) => {
+		const isWishlistItem = checkItemAddedInWishlist(id);
+		if (!isWishlistItem) {
+			dispatch(addTowishlist(product));
+		}
+		console.log(isWishlistItem);
 	};
 
 	return (
@@ -34,10 +60,13 @@ const ProductCardItem = ({
 				)}
 				<img src={product.thumbnail} alt="image" />
 				<div className="space-y-4 absolute top-4 right-4 z-10 flex flex-col gap-1">
-					<button>
-						<HeartIcon />
+					<button
+						onClick={() => handleAddToWishlist(product.id)}
+						className={`group/{abc} cursor-pointer ${checkItemAddedInWishlist(product.id) && "bg-red-500 text-white"} hover:bg-my_secondary hover:text-white size-6 rounded-full flex items-center justify-center`}
+					>
+						<Heart className="text-[10px]" size={18} />
 					</button>
-					<button>
+					<button className="cursor-pointer">
 						<EyeIcon />
 					</button>
 				</div>

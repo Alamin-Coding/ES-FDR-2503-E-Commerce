@@ -1,9 +1,12 @@
+import { useDispatch } from "react-redux";
 import { DeleteIcon } from "./icons";
 import { StarIcon, EyeIcon, HeartIcon } from "./icons";
 
 import { Link } from "react-router";
+import { deleteWishlistItem } from "../features/wishlist/wishlistSlice";
 
 const WishlistProductCard = ({ product }) => {
+	const dispatch = useDispatch();
 	return (
 		<div className="overflow-hidden w-[270px]">
 			{/* Image */}
@@ -14,9 +17,12 @@ const WishlistProductCard = ({ product }) => {
 					</span>
 				)}
 
-				<img src={product.image} alt="image" />
+				<img src={product.image || product.thumbnail} alt="image" />
 				<div className="space-y-4 absolute top-4 right-4 z-10 flex flex-col gap-1">
-					<button className="size-8.5 rounded-full bg-white flex items-center justify-center cursor-pointer">
+					<button
+						className="size-8.5 rounded-full bg-white flex items-center justify-center cursor-pointer"
+						onClick={() => dispatch(deleteWishlistItem(product.id))}
+					>
 						<DeleteIcon />
 					</button>
 				</div>
