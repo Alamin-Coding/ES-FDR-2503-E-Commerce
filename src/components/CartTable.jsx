@@ -1,27 +1,16 @@
-import React, { use, useEffect, useState } from "react";
 import Section from "./Section";
 import Container from "./Container";
 import Cart_1 from "./../assets/cart-1.png";
 import Cart_2 from "./../assets/cart-2.png";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { decrementItem, incrementItem } from "../features/cart/cartSlice";
 
 const CartTable = () => {
-	const [totalItem, setTotalItem] = useState(1);
 	const { cartList } = useSelector((state) => state.cart);
-	console.log(cartList);
 
-	const handleQuantity = (value, id) => {
-		console.log(value, id);
-	};
-	const handleIncrement = (id) => {
-		const totalCartItem = cartList.map((item) => item.id === id);
-		console.log(totalCartItem);
-	};
-	const handleDecrement = () => {
-		setTotalItem(totalItem - 1);
-	};
+	const dispatch = useDispatch();
 
 	return (
 		<Section>
@@ -64,13 +53,13 @@ const CartTable = () => {
 										<div className="flex flex-col">
 											<button
 												className="cursor-pointer"
-												onClick={() => handleIncrement(item.id)}
+												onClick={() => dispatch(incrementItem(item.id))}
 											>
 												<ChevronUp size={16} />
 											</button>
 											<button
 												className="cursor-pointer"
-												onClick={() => handleDecrement(item.quantity, item.id)}
+												onClick={() => dispatch(decrementItem(item.id))}
 											>
 												<ChevronDown size={16} />
 											</button>
@@ -78,7 +67,7 @@ const CartTable = () => {
 									</div>
 								</td>
 								<td className="px-5 h-[72px] text-right">
-									{item.price * item.quantity}
+									{item.subtotal.toFixed(2)}
 								</td>
 							</tr>
 						))}

@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { addToCart } from "../features/cart/cartSlice";
 import { addTowishlist } from "../features/wishlist/wishlistSlice";
 import { Heart } from "lucide-react";
+import { Bounce, toast } from "react-toastify";
 
 // interface Product {
 // 	id: 1;
@@ -33,6 +34,7 @@ const ProductCardItem = ({
 				addToCart({
 					...product,
 					quantity: 1,
+					subtotal: product.price,
 				}),
 			);
 		}
@@ -41,16 +43,43 @@ const ProductCardItem = ({
 	const checkItemAddedInWishlist = (id) =>
 		wishList.find((item) => item.id == id);
 
+	const warnNotify = () =>
+		toast.warn("Already added!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "dark",
+			transition: Bounce,
+		});
+	const succesNotify = () =>
+		toast.success("Successfully added!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "dark",
+			transition: Bounce,
+		});
+
 	const handleAddToWishlist = (id) => {
 		const isWishlistItem = checkItemAddedInWishlist(id);
 		if (!isWishlistItem) {
 			dispatch(addTowishlist(product));
+			succesNotify();
+		} else {
+			warnNotify();
 		}
-		console.log(isWishlistItem);
 	};
 
 	return (
-		<div className="overflow-hidden w-[270px]">
+		<div className="overflow-hidden">
 			{/* Image */}
 			<div className="bg-F5F5F5 rounded-sm flex items-center justify-center p-4 relative group min-h-[250px]">
 				{product.discount && (

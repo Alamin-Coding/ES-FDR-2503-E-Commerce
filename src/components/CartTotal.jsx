@@ -1,10 +1,14 @@
-import React from "react";
 import Section from "./Section";
 import Container from "./Container";
 import { Link } from "react-router";
 import Button from "./Button";
+import { useSelector } from "react-redux";
 
 const CartTotal = () => {
+	const { cartList } = useSelector((state) => state.cart);
+
+	const subtotal = cartList.reduce((prev, curr) => prev + curr.subtotal, 0);
+
 	return (
 		<Section className="pb-35">
 			<Container>
@@ -27,7 +31,7 @@ const CartTotal = () => {
 							<div className="pt-4 text-black text-[16px]">
 								<div className="flex justify-between border-b border-gray-500 py-4">
 									<span>Subtotal</span>
-									<span>$1750</span>
+									<span>${subtotal.toFixed(2)}</span>
 								</div>
 								<div className="flex justify-between border-b border-gray-500 py-4">
 									<span>Shipping</span>
@@ -35,12 +39,12 @@ const CartTotal = () => {
 								</div>
 								<div className="flex justify-between py-4">
 									<span>Total</span>
-									<span>$1750</span>
+									<span>${subtotal.toFixed(2)}</span>
 								</div>
 								<div className="flex justify-center pb-10">
 									<Button
 										TagName={Link}
-										href="/checkout"
+										to={"/checkout"}
 										className="mt-4 mb-8 "
 									>
 										Proceed To Checkout
