@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { activeCategory } from "../features/shop/shopSlice";
 import Cetagories from "../components/sections/Categories";
+import ProductCard from "../components/ProductCard";
 
 // const menus = [
 // 	{
@@ -164,9 +165,9 @@ const ProductPage = () => {
                   </li>
             
               <ul className="space-y-4">
-                {menu.map((menu) => (
+                {menu?.map((menu) => (
                   <li
-                    key={menu.id}
+                    key={menu.slug}
                     onClick={() => handleFilter(menu)}
                     // title={menu.id}
                     className={`text-black hover:text-red-500 flex justify-between gap-2 items-center cursor-pointer ${activeMenu === menu.name && "text-green-600"}`}
@@ -217,8 +218,8 @@ const ProductPage = () => {
               </p>
             </div>
             <div className="grid grid-cols-3 gap-x-6 gap-y-10">
-              {products?.slice(startCount, endCount).map((item) => (
-                <ProductCardss key={item.id} product={item} />
+              {products?.slice(startCount, endCount)?.map((item) => (
+                <ProductCard key={item.id} product={item} />
               ))}
             </div>
             {/* Pagination */}

@@ -10,8 +10,32 @@ const ProductCard = ({
 	price_with_rating = false,
 }) => {
 
+
 	const dispatch = useDispatch();
 	const { cartList } = useSelector((state) => state.cart);
+console.log(cartList);
+	const handleAddCart = () => {
+
+	// const existingItem = cartList.find(
+	// 	(item) => item.id === product.id
+	// );
+
+	// if (existingItem) {
+
+	// 	dispatch(incrimentItem(product.id));
+
+	// } else {
+
+		dispatch(
+			addToCart({
+				...product,
+				quantity: 1,
+				subtotal: product.price,
+			})
+		);
+
+	// }
+};
 	
 	
 	return (
@@ -21,7 +45,7 @@ const ProductCard = ({
 				<span className="absolute top-4 left-4 z-10 bg-secondary text-white rounded-xs inline-block py-1 px-2">
 					{product.discount}%
 				</span>
-				<img src={product.image} alt="image" />
+				<img src={product.image || product.thumbnail} alt="image" />
 				<div className="space-y-4 absolute top-4 right-4 z-10 flex flex-col gap-1">
 					<button>
 						<HeartIcon />
@@ -30,7 +54,7 @@ const ProductCard = ({
 						<EyeIcon />
 					</button>
 				</div>
-				<button onClick={()=>dispatch(addToCart(product))} className="flex justify-center text-white bg-black absolute w-full px-2 py-2 bottom-1 group-hover:bottom-0 cursor-pointer opacity-0 group-hover:opacity-100 transition-all">
+				<button onClick={handleAddCart} className="flex justify-center text-white bg-black absolute w-full px-2 py-2 bottom-1 group-hover:bottom-0 cursor-pointer opacity-0 group-hover:opacity-100 transition-all">
 					Add To Cart
 				</button>
 			</div>
@@ -66,7 +90,7 @@ const ProductCard = ({
 							<StarIcon className="text-gold" />
 						</li>
 					</ul>
-					<span>({product.reviews})</span>
+					<span>({product.reviews?.length})</span>
 				</div>
 			</div>
 		</div>

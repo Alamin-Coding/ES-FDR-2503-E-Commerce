@@ -5,22 +5,24 @@ import Cart_1 from "../../assets/remote.svg";
 import Cart_2 from "../../assets/tv.svg";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import ProductCard from "../ProductCard";
+import { decrementItem, incrimentItem } from "../../features/cart/cartSlice";
 
 const CartTable = () => {
 	const [totalItem, setTotalItem] = useState(1);
 	const { cartList } = useSelector((state) => state.cart);
 	console.log(cartList);
-
-	const handleQuantity = (value, id) => {
-		console.log(value, id);
-	};
-	const handleIncrement = (id) => {
-		const totalCartItem = cartList.map((item) => item.id === id);
-		console.log(totalCartItem);
-	};
-	const handleDecrement = () => {
+    const dispatch =useDispatch(); 
+	// const handleQuantity = (value, id) => {
+	// 	console.log(value, id);
+	// };
+const handleIncrement = (id) => {
+	dispatch(incrimentItem(id));
+};
+	const handleDecrement = (id) => {
 		setTotalItem(totalItem - 1);
+		dispatch(decrementItem(id))
 	};
 
 	return (
@@ -43,7 +45,7 @@ const CartTable = () => {
 							<td className="px-5 h-[72px] text-center">Quantity</td>
 							<td className="px-5 h-[72px] text-right">Subtotal</td>
 						</tr>
-						{cartList.map((item) => (
+						{cartList?.map((item) => (
 							<tr className="text-black text-[16px] pl-10 pr-15 py-6 shadow-sm rounded-md">
 								<td className="px-5 h-[72px]">
 									<div className="flex items-center gap-2">
@@ -64,13 +66,13 @@ const CartTable = () => {
 										<div className="flex flex-col">
 											<button
 												className="cursor-pointer"
-												onClick={() => handleIncrement(item.id)}
+												onClick={()=>handleIncrement(item.id)}
 											>
 												<ChevronUp size={16} />
 											</button>
 											<button
 												className="cursor-pointer"
-												onClick={() => handleDecrement(item.quantity, item.id)}
+												onClick={() => handleDecrement(item.id)}
 											>
 												<ChevronDown size={16} />
 											</button>
@@ -78,7 +80,7 @@ const CartTable = () => {
 									</div>
 								</td>
 								<td className="px-5 h-[72px] text-right">
-									{item.price * item.quantity}
+									${item.subtotal}
 								</td>
 							</tr>
 						))}
