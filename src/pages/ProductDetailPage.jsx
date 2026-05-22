@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Section from "../components/Section";
 import Container from "../components/Container";
 import { HeartIcon, StarIcon } from "../components/icons";
@@ -15,40 +15,54 @@ import delivery from "../assets/icons/icon-delivery.png";
 import preturn from "../assets/icons/icon-return.png";
 import { FlashSellingProductsData } from "../data";
 import SectionHeader from "../components/SectionHeader";
+import axios from "axios";
+import { Link, useParams } from "react-router";
 
 const ProductDetailPage = () => {
+	const [product, setProduct] = useState({});
+	const { id } = useParams();
+	useEffect(() => {
+		axios.get(`https://dummyjson.com/products/${id}`).then((data) => {
+			setProduct({
+				colors: [
+					{ id: 1, color: "red" },
+					{ id: 2, color: "green" },
+				],
+				...data.data,
+			});
+		});
+	}, []);
+
+	console.log(product);
 	return (
 		<Section className="pb-35 pt-20">
 			<Container>
 				<div className="flex items-center gap-2 justify-start pb-20">
-					<span className="text-slate-300">Home</span>
+					<Link className="text-slate-300" to={"/"}>
+						Home
+					</Link>
 					<span className="text-slate-300">/</span>
 					<span className="text-slate-300">Gaming</span>
 					<span className="text-slate-300">/</span>
-					<span className="text-slate-800">Havic HV G-92 Gamepad</span>
+					<span className="text-slate-800">{product.title}</span>
 				</div>
 				<div className="grid grid-cols-[170px_500px_auto]  pb-35">
 					<div className="flex flex-col gap-4 w-[170px]">
-						<div className="w-[170px] h-[138px] rounded bg-F5F5F5 flex items-center justify-center">
-							<img src={Image1} alt="Product1" />
-						</div>
-						<div className="w-[170px] h-[138px] rounded bg-f5f5f5 flex items-center justify-center">
-							<img src={Image2} alt="Product1" />
-						</div>
-						<div className="w-[170px] h-[138px] rounded bg-F5F5F5 flex items-center justify-center">
-							<img src={Image3} alt="Product1" />
-						</div>
-						<div className="w-[170px] h-[138px] rounded bg-F5F5F5 flex items-center justify-center">
-							<img src={Image} alt="Product1" />
-						</div>
+						{product.images?.map((image) => {
+							return (
+								<div className="w-[170px] h-[138px] rounded bg-F5F5F5 flex items-center justify-center">
+									<img src={image || Image1} alt="Product1" />
+								</div>
+							);
+						})}
 					</div>
 					<div className="w-full w-[500px]  pr-18.5 pl-8.5 ">
-						<img src={Image} alt="Product" />
+						<img src={product.thumbnail} alt="Product" />
 					</div>
 					<div>
 						<div>
 							<h2 className="text-[24px] font-bold text-[#000000] pb-4">
-								Havic HV G-92 Gamepad
+								{product.title}
 							</h2>
 							<div className="flex items-center">
 								<div className="flex items-center gap-1">
@@ -64,12 +78,10 @@ const ProductDetailPage = () => {
 								</span>
 							</div>
 							<strong className="text-[24px] font-normal pt-4 text-[#000000]">
-								$192.00
+								${product?.price?.toFixed(2)}
 							</strong>
 							<p className="text-[14px] leading-[1.5] font-normal text-[#000000] max-w-[373px] py-6">
-								PlayStation 5 Controller Skin High quality vinyl with air
-								channel adhesive for easy bubble free install & mess free
-								removal Pressure sensitive.
+								{product.description}
 							</p>
 							<hr className="pb-10 text-[#000000]/50" />
 						</div>
@@ -80,9 +92,15 @@ const ProductDetailPage = () => {
 									Colours:
 								</strong>
 								<div className="flex items-center gap-2">
-									<div className="w-6 h-6 rounded-full bg-[#000000] cursor-pointer"></div>
-									<div className="w-6 h-6 rounded-full bg-[#FF0000] cursor-pointer"></div>
-									<div className="w-6 h-6 rounded-full bg-[#00FF66] cursor-pointer"></div>
+									{product.colors?.map((item) => (
+										<div
+											style={{ backgroundColor: item.color }}
+											className={`w-6 h-6 rounded-full cursor-pointer`}
+										></div>
+									))}
+
+									{/* <div className="w-6 h-6 rounded-full bg-[#FF0000] cursor-pointer"></div>
+									<div className="w-6 h-6 rounded-full bg-[#00FF66] cursor-pointer"></div> */}
 								</div>
 							</div>
 							<div className="flex items-center gap-6">

@@ -4,23 +4,23 @@ import ProductCard from "../components/ProductCard";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router";
 import { ExploreOurProductsData } from "../data";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCardItem from "../components/ProductCard";
 
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { activeCategory } from "../features/shop/shopSlice";
 import { FilterIcon, ListFilter, X } from "lucide-react";
+import { ThemeContext } from "../context/ThemeContext";
 
 const ProductPage = () => {
 	const { activeMenu } = useSelector((state) => state.shop);
 	const dispatch = useDispatch();
-	console.log(activeMenu);
 	const [endCount, setEndCount] = useState(6);
 	const [startCount, setStartCount] = useState(0);
 	const [menus, setMenus] = useState([]);
 
-	const [url, setUrl] = useState("https://dummyjson.com/products");
+	const {url, setUrl} = useContext(ThemeContext);
 
 	const [products, setProducts] = useState([]);
 	const [showCount, setShowCount] = useState(6);

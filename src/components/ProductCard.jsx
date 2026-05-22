@@ -95,9 +95,9 @@ const ProductCardItem = ({
 					>
 						<Heart className="text-[10px]" size={18} />
 					</button>
-					<button className="cursor-pointer">
+					<Link to={`/product/${product.id}`} className="cursor-pointer">
 						<EyeIcon />
-					</button>
+					</Link>
 				</div>
 				<button
 					onClick={handleAddToCart}
@@ -107,7 +107,9 @@ const ProductCardItem = ({
 				</button>
 			</div>
 			<div className="pt-4">
-				<h4 className="text-black font-medium">{product.title}</h4>
+				<h4 className="text-black font-medium">
+					<Link to={"/"}>{product.title}</Link>
+				</h4>
 				{showPrice && (
 					<p className="py-2">
 						<span className="text-my_secondary">${product.price}</span>{" "}

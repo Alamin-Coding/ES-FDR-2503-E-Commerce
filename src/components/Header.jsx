@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 
 import searchIcon from "../assets/icons/search.png";
@@ -8,6 +8,8 @@ import { ListFilter, Menu, User, X } from "lucide-react";
 import ProfileDropdown from "./ProfileDropdown";
 import { AuthContext } from "../context/authContext";
 import { useSelector } from "react-redux";
+import ProductSearchDropdown from "./ProductSearchDropdown";
+import axios from "axios";
 
 const Header = () => {
 	// const user = null; // Replace with actual user data or authentication logic
@@ -15,10 +17,37 @@ const Header = () => {
 	const { cartList } = useSelector((state) => state.cart);
 	const { wishList } = useSelector((state) => state.wishlist);
 	const [showMenu, setShowMenu] = useState(false);
+	const [products, setProducts] = useState([]);
+	const [searchText, setSearchText] = useState("");
+	const [showSearchBox, setShowSearchBox] = useState(false);
 
 	const handleShowMenu = () => {
 		setShowMenu(!showMenu);
 	};
+
+	useEffect(() => {
+		axios.get("https://dummyjson.com/products").then((data) => {
+			setProducts(data.data.products);
+		});
+	}, []);
+
+	const handleSearch = (e) => {
+		setSearchText(e.target.value);
+	};
+	console.log(products);
+	console.log(searchText);
+
+	const searchResult = products.filter((element) => {
+		if (searchText.length == 0) {
+			return;
+		}
+
+		return element.title.toLowerCase().includes(searchText.toLowerCase());
+	});
+
+	// console.log(text.toLowerCase().includes("MaNGo".toLowerCase()))
+
+	console.log(searchResult);
 
 	return (
 		<>
@@ -95,15 +124,23 @@ const Header = () => {
 
 							{/* Right side */}
 							<div className="flex justify-end gap-4">
-								<form className="w-[243px] py-1.75 px-3  bg-F5F5F5 flex items-center justify-between gap-4">
+								<form className="w-[243px] py-1.75 px-3  bg-F5F5F5 flex items-center justify-between gap-4 relative">
 									<input
 										className="px-2 bg-transparent text-[12px] focus:outline-none"
 										type="text"
 										placeholder="What are you looking for?"
+										onChange={(e) => handleSearch(e)}
+										onFocus={() => setShowSearchBox(true)}
+										onBlur={() => setShowSearchBox(false)}
 									/>
 									<button type="submit" className="cursor-pointer">
 										<img src={searchIcon} alt="icon" />
 									</button>
+									{showSearchBox && searchText.length > 0 && (
+										<div className="absolute top-full right-0 z-50">
+											<ProductSearchDropdown searchProduct={searchResult} />
+										</div>
+									)}
 								</form>
 								<div className="flex items-center gap-4">
 									<Link to="/cart" className="cursor-pointer relative">
